@@ -378,24 +378,41 @@ page {
   font-size: 25rpx;
 }
 
+.primary-action {
+  margin-top: 0;
+}
+
 .actions {
+  width: 100%;
   margin-top: 22rpx;
   display: flex;
   flex-direction: column;
   gap: 16rpx;
+  overflow: hidden;
 }
 
 .row {
+  width: 100%;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16rpx;
   margin-top: 0;
+  box-sizing: border-box;
 }
 
-.row .btn {
+.action-btn {
+  width: auto;
   min-width: 0;
-  font-size: 27rpx;
-  padding: 0 18rpx;
+  max-width: 100%;
+  min-height: 86rpx;
+  padding: 0 14rpx;
+  font-size: 26rpx;
+  text-align: center;
+}
+
+.full-action {
+  width: 100%;
+  min-height: 86rpx;
 }
 
 .msg {

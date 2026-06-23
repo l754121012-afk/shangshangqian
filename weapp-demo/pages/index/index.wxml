@@ -54,19 +54,19 @@
         </view>
       </view>
 
-      <button class="btn" bindtap="onDraw">{{drawButtonText}}</button>
+      <view class="btn primary-action" bindtap="onDraw">{{drawButtonText}}</view>
 
       <view wx:if="{{hasDrawn}}" class="actions">
         <view class="row">
-          <button class="btn" bindtap="onVerify">今天真的有点准</button>
-          <button class="btn sub" bindtap="onCollect">收入牌册</button>
+          <view class="btn action-btn" bindtap="onVerify">今天真的有点准</view>
+          <view class="btn sub action-btn" bindtap="onCollect">收入牌册</view>
         </view>
         <view class="row">
-          <button class="btn sub" bindtap="onShareCard">生成比手气卡</button>
-          <button wx:if="{{canTurn}}" class="btn sub" bindtap="onTurn">看广告转运</button>
+          <view class="btn sub action-btn" bindtap="onShareCard">生成比手气卡</view>
+          <view wx:if="{{canTurn}}" class="btn sub action-btn" bindtap="onTurn">看广告转运</view>
         </view>
-        <button class="btn sub" bindtap="onBonus">看广告补充签</button>
-        <button wx:if="{{current.type === 'negative'}}" class="btn danger" bindtap="onDissolve">我已克服 / 我已解决</button>
+        <view class="btn sub full-action" bindtap="onBonus">看广告补充签</view>
+        <view wx:if="{{current.type === 'negative'}}" class="btn danger full-action" bindtap="onDissolve">我已克服 / 我已解决</view>
       </view>
 
       <view wx:if="{{verifyShown}}" class="msg">
