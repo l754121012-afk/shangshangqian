@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/index/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "今日上上签",
+    "navigationBarBackgroundColor": "#230b0a",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#180504"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

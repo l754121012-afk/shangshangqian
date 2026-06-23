@@ -1,0 +1,13 @@
+{
+  "appid": "touristappid",
+  "projectname": "今日上上签-weapp-demo",
+  "compileType": "miniprogram",
+  "libVersion": "latest",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": false
+  }
+}

@@ -1,0 +1,140 @@
+<view class="app">
+  <view class="top">
+    <view>
+      <view class="brand-sub">JIN RI SHANG SHANG QIAN</view>
+      <view class="brand">今日上上签</view>
+    </view>
+    <view class="streak">
+      <text class="streak-num">{{streak}}</text>
+      <text class="streak-label">连续天</text>
+    </view>
+  </view>
+
+  <view wx:if="{{tab === 'draw'}}" class="page">
+    <view class="panel">
+      <view class="title">摸一张<text>今日财运签</text></view>
+      <view class="hint">微信小程序 Demo，验证抽卡、广告、牌册与好友比手气。</view>
+
+      <view class="luck-axis {{rolling ? 'rolling' : ''}}">
+        <view class="axis-line">
+          <view class="axis-mark" style="left: {{axisLeft}}%;"></view>
+        </view>
+        <view class="axis-labels">
+          <text>平</text>
+          <text>上</text>
+          <text class="hot">上上</text>
+          <text class="hot">大吉</text>
+        </view>
+      </view>
+      <view class="pre-note">签位未定，翻开才知道。</view>
+      <view class="quota">{{quotaText}}</view>
+
+      <view class="deck {{current.rarity === 'SSR' ? 'rare' : ''}}">
+        <view class="aura"></view>
+        <view class="flames">
+          <view class="flame"></view>
+          <view class="flame"></view>
+          <view class="flame"></view>
+          <view class="flame"></view>
+          <view class="flame"></view>
+        </view>
+        <view class="card {{cardClass}}">
+          <view class="rarity">{{current.grade || 'TODAY'}} · {{current.rarity || 'TAP'}}</view>
+          <view class="seal">
+            <text>{{current.seal || '签'}}</text>
+            <text class="seal-sub">今日</text>
+          </view>
+          <view class="kw">{{current.name || '未抽'}}</view>
+          <view class="txt">{{current.text || '点击下方按钮，抽取今天的第一张上上签。'}}</view>
+          <view class="pills">
+            <view class="pill"><text>宜</text>{{current.do || '先看方向'}}</view>
+            <view class="pill"><text>忌</text>{{current.avoid || '急着判断'}}</view>
+          </view>
+          <view class="micro"><text>微行动</text>{{current.action || '给今天留一个 3 分钟的小开局。'}}</view>
+        </view>
+      </view>
+
+      <button class="btn" bindtap="onDraw">{{drawButtonText}}</button>
+
+      <view wx:if="{{hasDrawn}}" class="actions">
+        <view class="row">
+          <button class="btn" bindtap="onVerify">今天真的有点准</button>
+          <button class="btn sub" bindtap="onCollect">收入牌册</button>
+        </view>
+        <view class="row">
+          <button class="btn sub" bindtap="onShareCard">生成比手气卡</button>
+          <button wx:if="{{canTurn}}" class="btn sub" bindtap="onTurn">看广告转运</button>
+        </view>
+        <button class="btn sub" bindtap="onBonus">看广告补充签</button>
+        <button wx:if="{{current.type === 'negative'}}" class="btn danger" bindtap="onDissolve">我已克服 / 我已解决</button>
+      </view>
+
+      <view wx:if="{{verifyShown}}" class="msg">
+        <text>感谢收获</text>
+        如果这张签今天真的帮你留住了一点好运，可以轻轻添一束好运火。
+        <button class="btn mini" bindtap="onSupport">模拟添一束好运火</button>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{tab === 'album'}}" class="page">
+    <view class="title">我的<text>好运牌册</text></view>
+    <view class="hint">稀有度只服务收集感，不输出命运结论。</view>
+    <view class="album">
+      <view wx:for="{{albumCards}}" wx:key="id" class="mini-card {{item.owned ? '' : 'lock'}} {{item.rarity === 'SSR' && item.owned ? 'ssr' : ''}}">
+        <text class="mini-r">{{item.owned ? item.rarity : 'LOCK'}}</text>
+        {{item.owned ? item.name : '?'}}
+      </view>
+    </view>
+    <view class="set">{{albumText}}</view>
+  </view>
+
+  <view wx:if="{{tab === 'friends'}}" class="page">
+    <view class="title">好友<text>比手气</text></view>
+    <view class="hint">比较今日手气和卡牌稀有度，不做羞辱性排名。</view>
+    <view class="friend-list">
+      <view wx:for="{{friends}}" wx:key="name" class="friend">
+        <view class="rank">{{index + 1}}</view>
+        <view class="avatar"></view>
+        <view class="friend-meta">
+          <view>{{item.name}}</view>
+          <text>{{item.rarity}} · {{item.card}} · 好运值 {{item.score}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="panel pool-panel">
+      <view class="pool">
+        <view></view><view></view><view></view><view></view><view></view>
+      </view>
+      <view class="hint center">今天这组人的火很旺。适合一起推进一件拖了很久的小事。</view>
+    </view>
+  </view>
+
+  <view wx:if="{{tab === 'me'}}" class="page">
+    <view class="title">今日<text>分享卡</text></view>
+    <view class="share-card">
+      <view class="share-k">JRSSQ · SHARE CARD</view>
+      <view class="share-title">我抽到「{{current.name || '今日上上签'}}」</view>
+      <view class="share-text">来比比你今天的手气。好友好运聚在一起，会生成一段群体鼓励。</view>
+    </view>
+    <button class="btn" bindtap="onCopy">复制分享文案</button>
+    <button class="btn sub reset" bindtap="onReset">重置 Demo</button>
+  </view>
+
+  <view wx:if="{{adVisible}}" class="ad-overlay">
+    <view class="ad-card">
+      <view class="ad-tag">SIMULATED AD · 2.6S</view>
+      <view class="ad-title">好运加载中</view>
+      <view class="ad-copy">{{adCopy}}</view>
+      <view class="ad-progress"><view></view></view>
+      <view class="ad-count">广告结束后继续</view>
+    </view>
+  </view>
+
+  <view class="tabs">
+    <view class="tab {{tab === 'draw' ? 'on' : ''}}" data-tab="draw" bindtap="switchTab">签<text>抽签</text></view>
+    <view class="tab {{tab === 'album' ? 'on' : ''}}" data-tab="album" bindtap="switchTab">册<text>牌册</text></view>
+    <view class="tab {{tab === 'friends' ? 'on' : ''}}" data-tab="friends" bindtap="switchTab">火<text>好友</text></view>
+    <view class="tab {{tab === 'me' ? 'on' : ''}}" data-tab="me" bindtap="switchTab">我<text>分享</text></view>
+  </view>
+</view>
