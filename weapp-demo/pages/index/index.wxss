@@ -850,8 +850,21 @@ page {
 .card.card-shangshang .txt{color:rgba(106,64,48,.88)!important}
 
 /* 比手气卡飞行动画 */
-.share-card-flying{animation:cardFlyOut 1.2s ease-in forwards}
-@keyframes cardFlyOut{0%{transform:scale(1);opacity:1}60%{transform:scale(.4) translateY(-80rpx);opacity:.8}100%{transform:scale(.15) translateY(-200rpx);opacity:0}}
+.share-card-flying{animation:cardFlyOut 1s ease-in forwards}
+@keyframes cardFlyOut{0%{transform:scale(1);opacity:1}50%{transform:scale(.5) translateY(-100rpx);opacity:.7}100%{transform:scale(.1) translateY(-300rpx);opacity:0}}
 /* 好友列表中"我"的高亮 */
 .friend-me{background:rgba(255,209,102,.12)!important;border-color:rgba(255,209,102,.35)!important}
 .friend-me .friend-meta view{color:#ffd166}
+
+/* 打赏弹窗 */
+.support-overlay{position:fixed;z-index:50;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(10,2,1,.82);padding:40rpx}
+.support-card{width:100%;border-radius:36rpx;border:2rpx solid rgba(255,209,102,.22);background:linear-gradient(160deg,#2a1512,#180a08);padding:40rpx;text-align:center;box-shadow:0 36rpx 90rpx rgba(0,0,0,.4)}
+.support-title{font-family:Georgia,serif;font-size:40rpx;color:#ffd166;margin-bottom:8rpx}
+.support-sub{font-size:24rpx;color:#e6bd82;line-height:1.5;margin-bottom:32rpx}
+.support-amounts{display:flex;gap:20rpx;justify-content:center;margin-bottom:28rpx}
+.support-amount{flex:1;padding:20rpx 0;border-radius:20rpx;border:2rpx solid rgba(255,209,102,.2);background:rgba(255,209,102,.06);text-align:center}
+.support-amount.sa-pop{border-color:rgba(255,209,102,.5);background:rgba(255,209,102,.12);position:relative}
+.support-amount.sa-pop::after{content:"推荐";position:absolute;top:-16rpx;right:-8rpx;font-size:18rpx;color:#fff;background:#c51f1a;padding:2rpx 10rpx;border-radius:8rpx}
+.sa-val{font-family:Georgia,serif;font-size:36rpx;color:#ffd166;display:block;margin-bottom:4rpx}
+.sa-label{font-size:20rpx;color:#e6bd82;display:block}
+.support-hint{font-size:20rpx;color:rgba(230,189,130,.4);font-style:italic}

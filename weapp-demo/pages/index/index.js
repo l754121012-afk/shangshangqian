@@ -47,7 +47,10 @@ Page({
     friendModalVisible: false,
     friendModal: {},
     shareFlying: false,
-    shareReceived: false
+    shareReceived: false,
+    todayScore: 0,
+    todayDrawCount: 0,
+    supportVisible: false
   },
 
   onLoad() {
@@ -58,10 +61,14 @@ Page({
       wx.setStorageSync('drawDate', todayKey())
       wx.setStorageSync('freeUsed', 0)
     }
+    const todayScore = Number(wx.getStorageSync('todayScore') || 0)
+    const todayDrawCount = Number(wx.getStorageSync('todayDrawCount') || 0)
     this.setData({
       freeUsed,
       streak: Number(wx.getStorageSync('streak') || 1),
-      collection: wx.getStorageSync('collection') || []
+      collection: wx.getStorageSync('collection') || [],
+      todayScore: todayScore,
+      todayDrawCount: todayDrawCount
     })
     this.renderAll()
   },
@@ -102,6 +109,8 @@ Page({
     this.setData({ rolling: true, drawButtonText: '签位滚动中…' })
     setTimeout(() => {
       const card = this.pickCard()
+      const todayScore = this.data.todayScore + (card.score || 0)
+      const todayDrawCount = this.data.todayDrawCount + 1
       this.setData({
         current: card,
         hasDrawn: true,
@@ -110,10 +119,14 @@ Page({
         cardClass: card.type === 'negative' ? 'negative' : card.type === 'low' ? 'low' : '',
         canTurn: card.type === 'low' || card.type === 'negative',
         verifyShown: false,
-        drawButtonText: '再抽今日上上签'
+        drawButtonText: '再抽今日上上签',
+        todayScore: todayScore,
+        todayDrawCount: todayDrawCount
       })
+      wx.setStorageSync('todayScore', todayScore)
+      wx.setStorageSync('todayDrawCount', todayDrawCount)
       this.renderAll()
-      wx.showToast({ title: card.rarity === 'SSR' ? '抽中大吉签' : `抽到${card.grade}`, icon: 'none' })
+      wx.showToast({ title: card.grade === '大吉签' ? '抽中大吉签！' : '抽到' + card.grade, icon: 'none' })
     }, 820)
   },
 
@@ -139,8 +152,15 @@ Page({
   },
 
   onSupport() {
-    wx.showToast({ title: '感谢支持！好运火已点亮', icon: 'none', duration: 2000 })
-    this.setData({ verifyShown: false })
+    this.setData({ supportVisible: true })
+  },
+  closeSupport() {
+    this.setData({ supportVisible: false })
+  },
+  confirmSupport(e) {
+    const amount = e.currentTarget.dataset.amount || 1
+    this.setData({ supportVisible: false, verifyShown: false })
+    wx.showToast({ title: '感谢支持 ¥' + amount + ' 好运火已点亮', icon: 'none', duration: 2000 })
   },
 
   onCollect() {
@@ -208,9 +228,10 @@ Page({
     const driftList = mockDrift
 
     const cur = this.data.current.id ? this.data.current : cards[0]
-    const myScore = cur.score || 0
+    const myScore = this.data.todayScore || (cur.score || 0)
     const myGrade = cur.grade || '上签'
     const myCard = cur.name || '稳住'
+    const myDrawCount = this.data.todayDrawCount || 1
     // 模拟好友数据，分数有基础值+随机波动
     const friendsBase = [
       { name: '阿泽', card: '稳步进财', grade: '上上签', baseScore: 85 },
@@ -234,6 +255,7 @@ Page({
       driftList,
       friends,
       myRank: myRank,
+      todayDrawCount: myDrawCount,
       shareReceived: this.data.shareReceived || false
     })
   },
@@ -270,9 +292,12 @@ Page({
     wx.clearStorageSync()
     this.setData({
       current: {}, hasDrawn: false, axisLeft: 0, freeUsed: 0, collection: [],
-      drawButtonText: '抽今日上上签', verifyShown: false
+      drawButtonText: '抽今日上上签', verifyShown: false,
+      todayScore: 0, todayDrawCount: 0
     })
     wx.setStorageSync('drawDate', todayKey())
+    wx.setStorageSync('todayScore', 0)
+    wx.setStorageSync('todayDrawCount', 0)
     this.renderAll()
   }
 })

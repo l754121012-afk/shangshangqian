@@ -27,7 +27,7 @@
       </view>
       <view class="pre-note">签位未定，翻开才知道。</view>
       <view class="quota">{{quotaText}}</view>
-      <view class="deck {{current.grade === '大吉签' ? 'rare' : ''}}">
+      <view class="deck {{current.grade === '大吉签' ? 'rare' : ''}} {{shareFlying ? 'share-card-flying' : ''}}">
         <view class="aura"></view>
         <view class="card {{cardClass}} {{current.grade === '大吉签' ? 'card-daji' : ''}} {{current.grade === '上上签' ? 'card-shangshang' : ''}}">
           <view class="card-sweep-wrap" wx:if="{{current.grade === '大吉签'}}">
@@ -169,7 +169,7 @@
 
   <view wx:if="{{tab === 'friends'}}" class="page" style="padding-bottom:80rpx">
     <view class="title">好友<text>比手气</text></view>
-    <view class="hint">你的今日好运值排名第{{myRank}}名。{{shareReceived ? '你刚送出的比手气卡已计入。' : '点击抽签页"生成比手气卡"可送达。'}}</view>
+    <view class="hint">今日累计好运值 {{todayScore}} 分（已抽{{todayDrawCount}}张），排名第{{myRank}}名。{{shareReceived ? '比手气卡已送达。' : '点击"生成比手气卡"可送好友榜。'}}</view>
     <view class="friend-list">
       <view wx:for="{{friends}}" wx:key="name" class="friend {{item.isMe ? 'friend-me' : ''}}">
         <view class="rank">{{index + 1}}</view>
@@ -197,6 +197,29 @@
     </view>
     <button class="btn" bindtap="onCopy">复制分享文案</button>
     <button class="btn sub reset" bindtap="onReset">重置 Demo</button>
+  </view>
+
+
+  <view wx:if="{{supportVisible}}" class="support-overlay" bindtap="closeSupport">
+    <view class="support-card" catchtap="">
+      <view class="support-title">添一束好运火</view>
+      <view class="support-sub">感谢这份签今天帮到了你，点亮一束火为好运加油。</view>
+      <view class="support-amounts">
+        <view class="support-amount" bindtap="confirmSupport" data-amount="1">
+          <view class="sa-val">¥1</view>
+          <view class="sa-label">小火苗</view>
+        </view>
+        <view class="support-amount sa-pop" bindtap="confirmSupport" data-amount="3">
+          <view class="sa-val">¥3</view>
+          <view class="sa-label">旺火</view>
+        </view>
+        <view class="support-amount" bindtap="confirmSupport" data-amount="5">
+          <view class="sa-val">¥5</view>
+          <view class="sa-label">大火</view>
+        </view>
+      </view>
+      <view class="support-hint">这是自愿感谢，不影响签的内容</view>
+    </view>
   </view>
 
   <view wx:if="{{adVisible}}" class="ad-overlay">
