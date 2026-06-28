@@ -13,8 +13,7 @@
   <view wx:if="{{tab === 'draw'}}" class="page">
     <view class="panel">
       <view class="title">摸一张<text>今日财运签</text></view>
-      <view class="hint">微信小程序 Demo，验证抽卡、广告、牌册与好友比手气。</view>
-
+      <view class="hint">微信小程序 Demo，验证抽卡、广告、牌册与漂流签。</view>
       <view class="luck-axis {{rolling ? 'rolling' : ''}}">
         <view class="axis-line">
           <view class="axis-mark" style="left: {{axisLeft}}%;"></view>
@@ -28,7 +27,6 @@
       </view>
       <view class="pre-note">签位未定，翻开才知道。</view>
       <view class="quota">{{quotaText}}</view>
-
       <view class="deck {{current.rarity === 'SSR' ? 'rare' : ''}}">
         <view class="aura"></view>
         <view class="flames">
@@ -53,9 +51,7 @@
           <view class="micro"><text>微行动</text>{{current.action || '给今天留一个 3 分钟的小开局。'}}</view>
         </view>
       </view>
-
       <view class="btn primary-action" bindtap="onDraw">{{drawButtonText}}</view>
-
       <view wx:if="{{hasDrawn}}" class="actions">
         <view class="row">
           <view class="btn action-btn" bindtap="onVerify">今天真的有点准</view>
@@ -68,7 +64,6 @@
         <view class="btn sub full-action" bindtap="onBonus">看广告补充签</view>
         <view wx:if="{{current.type === 'negative'}}" class="btn danger full-action" bindtap="onDissolve">我已克服 / 我已解决</view>
       </view>
-
       <view wx:if="{{verifyShown}}" class="msg">
         <text>感谢收获</text>
         如果这张签今天真的帮你留住了一点好运，可以轻轻添一束好运火。
@@ -79,14 +74,100 @@
 
   <view wx:if="{{tab === 'album'}}" class="page">
     <view class="title">我的<text>好运牌册</text></view>
-    <view class="hint">稀有度只服务收集感，不输出命运结论。</view>
-    <view class="album">
-      <view wx:for="{{albumCards}}" wx:key="id" class="mini-card {{item.owned ? '' : 'lock'}} {{item.rarity === 'SSR' && item.owned ? 'ssr' : ''}}">
-        <text class="mini-r">{{item.owned ? item.rarity : 'LOCK'}}</text>
-        {{item.owned ? item.name : '?'}}
+    <view class="hint">每种签各自样式统一，可多张并存。大吉签含专属动效。</view>
+    <view class="album-v2">
+      <block wx:for="{{albumDisplay}}" wx:key="aid">
+        <view wx:if="{{item.grade === '大吉签'}}" class="album-card ac-daji">
+          <view class="ac-glow-orbit"><view class="ac-g1"></view><view class="ac-g2"></view></view>
+          <view class="ac-sweep"></view>
+          <view class="ac-daji-texture">
+            <view class="ac-flame-bar"><view class="afb1"></view><view class="afb2"></view><view class="afb3"></view></view>
+            <view class="ac-star"><view class="asc"></view><view class="ash"></view><view class="asv"></view></view>
+          </view>
+          <view class="album-card-inner">
+            <view class="ac-top"><view class="ac-grade">大吉签</view><view class="ac-seal">{{item.seal}}</view></view>
+            <view class="ac-body"><view class="ac-name">{{item.name}}</view><view class="ac-text">{{item.text}}</view></view>
+            <view class="ac-bottom"><view class="ac-action">{{item.action}}</view></view>
+          </view>
+          <view class="ac-bottom-deco"></view>
+        </view>
+        <view wx:elif="{{item.grade === '上上签'}}" class="album-card ac-shangshang">
+          <view class="ac-ss-texture"><view class="ac-arc ac-arc1"></view><view class="ac-arc ac-arc2"></view><view class="ac-arc ac-arc3"></view></view>
+          <view class="album-card-inner">
+            <view class="ac-top"><view class="ac-grade">上上签</view><view class="ac-seal">{{item.seal}}</view></view>
+            <view class="ac-body"><view class="ac-name">{{item.name}}</view><view class="ac-text">{{item.text}}</view></view>
+            <view class="ac-bottom"><view class="ac-action">{{item.action}}</view></view>
+          </view>
+          <view class="ac-bottom-deco"></view>
+        </view>
+        <view wx:elif="{{item.grade === '上签'}}" class="album-card ac-shang">
+          <view class="album-card-inner">
+            <view class="ac-top"><view class="ac-grade">上签</view><view class="ac-seal">{{item.seal}}</view></view>
+            <view class="ac-body"><view class="ac-name">{{item.name}}</view><view class="ac-text">{{item.text}}</view></view>
+            <view class="ac-bottom"><view class="ac-action">{{item.action}}</view></view>
+          </view>
+          <view class="ac-bottom-deco"></view>
+        </view>
+        <view wx:elif="{{item.grade === '平签'}}" class="album-card ac-ping">
+          <view class="album-card-inner">
+            <view class="ac-top"><view class="ac-grade">平签</view><view class="ac-seal">{{item.seal}}</view></view>
+            <view class="ac-body"><view class="ac-name">{{item.name}}</view><view class="ac-text">{{item.text}}</view></view>
+            <view class="ac-bottom"><view class="ac-action">{{item.action}}</view></view>
+          </view>
+          <view class="ac-bottom-deco"></view>
+        </view>
+        <view wx:elif="{{item.locked}}" class="album-card ac-lock">
+          <view class="ac-lock-inner"><view class="ac-lock-icon">?</view><view class="ac-lock-text">尚未收集</view></view>
+        </view>
+      </block>
+    </view>
+    <view class="album-stats">
+      <view class="album-stat"><b>{{albumTotal}}</b><span>已收集</span></view>
+      <view class="album-stat"><b>{{albumDajiCount}}</b><span>大吉签</span></view>
+      <view class="album-stat"><b>{{albumSSCount}}</b><span>上上签</span></view>
+      <view class="album-stat"><b>{{albumSCount}}</b><span>上签</span></view>
+    </view>
+  </view>
+
+  <view wx:if="{{tab === 'drift'}}" class="page" style="position:relative">
+    <view class="title">漂流<text>好运签</text></view>
+    <view class="hint">把签匿名或实名送给陌生人或好友，附上一句话。</view>
+    <view class="drift-tabs">
+      <view class="drift-tab {{driftSubTab === 'received' ? 'on' : ''}}" bindtap="switchDriftTab" data-sub="received">收到的签</view>
+      <view class="drift-tab {{driftSubTab === 'sent' ? 'on' : ''}}" bindtap="switchDriftTab" data-sub="sent">我送出的</view>
+    </view>
+    <view class="drift-list">
+      <view wx:for="{{driftList}}" wx:key="id" class="drift-item">
+        <view class="drift-meta">
+          <view class="drift-avatar">{{item.avatar}}</view>
+          <view class="drift-name">{{item.name}}</view>
+          <view class="drift-tag">{{item.grade}}</view>
+        </view>
+        <view class="drift-quote">{{item.quote}}</view>
+        <view class="drift-from">来自 · {{item.from}}</view>
+        <view class="drift-actions">
+          <view class="drift-btn" bindtap="onDriftThank">感谢</view>
+          <view class="drift-btn primary" bindtap="onDriftReply" data-id="{{item.id}}">{{item.canAddFriend ? '加为好友' : '回赠一张签'}}</view>
+        </view>
       </view>
     </view>
-    <view class="set">{{albumText}}</view>
+    <view wx:if="{{friendModalVisible}}" class="drift-modal-overlay" bindtap="closeFriendModal">
+      <view class="drift-modal" catchtap="">
+        <view class="drift-modal-avatar">{{friendModal.avatar}}</view>
+        <view class="drift-modal-title">{{friendModal.name}} 想加你为好友</view>
+        <view class="drift-modal-sub">来自漂流签 · {{friendModal.grade}}</view>
+        <view class="drift-modal-note">{{friendModal.quote}}</view>
+        <view class="drift-modal-actions">
+          <view class="drift-modal-btn" bindtap="closeFriendModal">暂不考虑</view>
+          <view class="drift-modal-btn primary" bindtap="acceptFriend">同意添加</view>
+        </view>
+      </view>
+    </view>
+    <view class="drift-send-bar">
+      <view class="drift-send-icon">+</view>
+      <view class="drift-send-info"><b>送出一张好运签</b><text>把今天的签装进漂流瓶</text></view>
+      <view class="drift-send-btn" bindtap="onSendDrift">去送出</view>
+    </view>
   </view>
 
   <view wx:if="{{tab === 'friends'}}" class="page">
@@ -134,6 +215,7 @@
   <view class="tabs">
     <view class="tab {{tab === 'draw' ? 'on' : ''}}" data-tab="draw" bindtap="switchTab">签<text>抽签</text></view>
     <view class="tab {{tab === 'album' ? 'on' : ''}}" data-tab="album" bindtap="switchTab">册<text>牌册</text></view>
+    <view class="tab {{tab === 'drift' ? 'on' : ''}}" data-tab="drift" bindtap="switchTab">漂<text>漂流</text></view>
     <view class="tab {{tab === 'friends' ? 'on' : ''}}" data-tab="friends" bindtap="switchTab">火<text>好友</text></view>
     <view class="tab {{tab === 'me' ? 'on' : ''}}" data-tab="me" bindtap="switchTab">我<text>分享</text></view>
   </view>

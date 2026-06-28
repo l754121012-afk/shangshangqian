@@ -688,3 +688,134 @@ page {
   color: #ffd166;
   background: rgba(255,209,102,.09);
 }
+
+/* ===== 牌册差异化样式 v17 ===== */
+.album-v2{display:grid;grid-template-columns:repeat(2,1fr);gap:20rpx;margin-top:40rpx}
+.album-card{position:relative;border-radius:36rpx;overflow:hidden;box-shadow:0 12rpx 36rpx rgba(0,0,0,.2);display:flex;flex-direction:column;font-family:Georgia,serif;min-height:380rpx}
+.album-card-inner{flex:1;display:flex;flex-direction:column;justify-content:space-between;position:relative;z-index:2}
+.ac-top{position:relative;min-height:72rpx}
+.ac-grade{position:absolute;top:16rpx;left:16rpx;font-size:18rpx;font-weight:700;letter-spacing:2rpx;padding:4rpx 14rpx;border-radius:6px;z-index:3}
+.ac-seal{position:absolute;top:16rpx;right:16rpx;width:52rpx;height:52rpx;border-radius:6rpx;display:flex;align-items:center;justify-content:center;font-size:24rpx;font-family:Georgia,serif;transform:rotate(3deg);z-index:3;font-weight:800}
+.ac-body{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20rpx 20rpx 12rpx;gap:10rpx}
+.ac-name{font-size:30rpx;font-weight:800;text-align:center;line-height:1.1}
+.ac-text{font-size:20rpx;text-align:center;line-height:1.35;min-height:48rpx}
+.ac-bottom{padding:16rpx 20rpx 20rpx;border-top:1px solid transparent}
+.ac-action{font-size:18rpx;text-align:center;font-style:italic;opacity:.7}
+
+/* 大吉签 */
+.ac-daji{background:radial-gradient(circle at 50% 0%,#e84a2a,#c83018 35%,#a01808 70%);border:5rpx solid #f0d0a0;color:#f0d0a0;animation:dajiGlow 3s ease-in-out infinite alternate;box-shadow:0 12rpx 36rpx rgba(0,0,0,.25),0 0 24rpx rgba(232,74,42,.3),inset 0 0 40rpx rgba(0,0,0,.1)}
+@keyframes dajiGlow{0%{box-shadow:0 12rpx 36rpx rgba(0,0,0,.25),0 0 24rpx rgba(232,74,42,.25)}100%{box-shadow:0 12rpx 36rpx rgba(0,0,0,.25),0 0 40rpx rgba(232,74,42,.4),0 0 72rpx rgba(255,209,102,.12)}}
+.ac-daji::before{content:"";position:absolute;inset:10rpx;border:2rpx solid rgba(240,208,160,.35);border-radius:24rpx;pointer-events:none;z-index:1}
+.ac-daji .ac-grade{background:#f0d0a0;color:#b5180a;box-shadow:0 4rpx 10rpx rgba(0,0,0,.25)}
+.ac-daji .ac-seal{background:#c01818;color:#fff0e0;box-shadow:0 6rpx 16rpx rgba(0,0,0,.35),inset 0 2rpx 0 rgba(255,255,255,.15);border:2rpx solid rgba(255,255,255,.1);transform:rotate(5deg)}
+.ac-daji .ac-name{font-size:36rpx;color:#f0d0a0;filter:drop-shadow(0 2rpx 6rpx rgba(0,0,0,.4));letter-spacing:4rpx}
+.ac-daji .ac-text{color:rgba(240,208,160,.85);font-weight:500}
+.ac-daji .ac-bottom{border-color:rgba(240,208,160,.2)}
+.ac-daji .ac-action{color:rgba(240,208,160,.6);font-weight:600}
+.ac-daji .ac-bottom-deco{position:absolute;bottom:0;left:0;right:0;height:56rpx;background:linear-gradient(180deg,transparent,rgba(80,10,4,.5));border-radius:0 0 36rpx 36rpx;pointer-events:none;z-index:1}
+/* 大吉签扫光 */
+.ac-daji .ac-sweep{position:absolute;top:0;left:-60%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,209,102,.18),rgba(255,240,180,.25),rgba(255,209,102,.18),transparent);z-index:1;pointer-events:none;animation:acSweep 3.5s ease-in-out infinite}
+@keyframes acSweep{0%{left:-60%}45%{left:100%}100%{left:100%}}
+/* 大吉签旋转光晕 */
+.ac-daji .ac-glow-orbit{position:absolute;top:50%;left:50%;width:220%;height:220%;transform:translate(-50%,-50%);pointer-events:none;z-index:0;animation:acOrbit 6s linear infinite;border-radius:50%}
+.ac-daji .ac-glow-orbit .ac-g1{position:absolute;top:0;left:50%;transform:translateX(-50%);width:40%;height:16%;background:radial-gradient(ellipse,rgba(255,209,102,.35),transparent 70%);filter:blur(16rpx)}
+.ac-daji .ac-glow-orbit .ac-g2{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:30%;height:12%;background:radial-gradient(ellipse,rgba(255,180,60,.25),transparent 70%);filter:blur(12rpx)}
+@keyframes acOrbit{to{transform:translate(-50%,-50%) rotate(360deg)}}
+/* 大吉签底纹 */
+.ac-daji-texture{position:absolute;inset:0;border-radius:36rpx;overflow:hidden;pointer-events:none;z-index:1}
+.ac-daji-texture .ac-flame-bar{position:absolute;bottom:68rpx;left:28rpx;display:flex;align-items:flex-end;gap:4rpx;opacity:.08}
+.ac-daji-texture .ac-flame-bar .afb1{width:10rpx;height:36rpx;background:#ffd166}
+.ac-daji-texture .ac-flame-bar .afb2{width:14rpx;height:52rpx;background:#ffd166}
+.ac-daji-texture .ac-flame-bar .afb3{width:10rpx;height:36rpx;background:#ffd166}
+.ac-daji-texture .ac-star{position:absolute;bottom:76rpx;right:44rpx;width:64rpx;height:64rpx;opacity:.08}
+.ac-daji-texture .ac-star .asc{width:12rpx;height:12rpx;background:#ffd166;border-radius:50%;position:absolute;top:26rpx;left:26rpx}
+.ac-daji-texture .ac-star .ash{width:64rpx;height:2rpx;background:#ffd166;position:absolute;top:30rpx;left:0}
+.ac-daji-texture .ac-star .asv{width:2rpx;height:64rpx;background:#ffd166;position:absolute;top:0;left:30rpx}
+
+/* 上上签 */
+.ac-shangshang{background:linear-gradient(180deg,#faf0d0,#f0e0b0);border:4rpx solid #e0c880;color:#4a2818;box-shadow:0 12rpx 36rpx rgba(0,0,0,.15)}
+.ac-shangshang::before{content:"";position:absolute;inset:8rpx;border:2rpx solid rgba(200,170,100,.3);border-radius:28rpx;pointer-events:none;z-index:1}
+.ac-shangshang .ac-grade{background:#e0c880;color:#4a2818;font-weight:800;box-shadow:0 2rpx 8rpx rgba(0,0,0,.1)}
+.ac-shangshang .ac-seal{background:#c01818;color:#fff0e0;box-shadow:0 4rpx 12rpx rgba(0,0,0,.2),inset 0 2rpx 0 rgba(255,255,255,.1);border:2rpx solid rgba(255,255,255,.1)}
+.ac-shangshang .ac-name{font-size:32rpx;color:#4a2818;letter-spacing:2rpx}
+.ac-shangshang .ac-text{color:#6a4030;font-weight:500}
+.ac-shangshang .ac-bottom{border-color:rgba(200,170,100,.25)}
+.ac-shangshang .ac-action{color:rgba(100,70,40,.5)}
+.ac-shangshang .ac-bottom-deco{position:absolute;bottom:0;left:0;right:0;height:48rpx;background:linear-gradient(180deg,transparent,rgba(160,130,70,.3));border-radius:0 0 36rpx 36rpx;pointer-events:none;z-index:1}
+/* 上上签底纹 */
+.ac-ss-texture{position:absolute;inset:0;border-radius:36rpx;overflow:hidden;pointer-events:none;z-index:1}
+.ac-ss-texture .ac-arc{position:absolute;width:112rpx;height:44rpx;border-top:2rpx solid #b89650;border-radius:50%;opacity:.1}
+.ac-ss-texture .ac-arc1{bottom:60rpx;left:16rpx}
+.ac-ss-texture .ac-arc2{bottom:72rpx;left:68rpx}
+.ac-ss-texture .ac-arc3{bottom:56rpx;right:20rpx}
+
+/* 上签 */
+.ac-shang{background:linear-gradient(180deg,#f5e8d0,#dcc090);border:4rpx solid rgba(200,170,110,.5);color:#5a4030;box-shadow:0 12rpx 32rpx rgba(0,0,0,.12)}
+.ac-shang::before{content:"";position:absolute;inset:8rpx;border:2rpx solid rgba(180,150,90,.25);border-radius:28rpx;pointer-events:none;z-index:1}
+.ac-shang .ac-grade{background:rgba(200,170,110,.3);color:#5a4030;font-weight:700}
+.ac-shang .ac-seal{background:#b85030;color:#fff0e0;box-shadow:0 2rpx 8rpx rgba(0,0,0,.15);border:2rpx solid rgba(255,255,255,.1)}
+.ac-shang .ac-name{font-size:30rpx;color:#4a3020}
+.ac-shang .ac-text{color:#6a5040}
+.ac-shang .ac-bottom{border-color:rgba(180,150,90,.2)}
+.ac-shang .ac-action{color:rgba(120,90,60,.5)}
+.ac-shang .ac-bottom-deco{position:absolute;bottom:0;left:0;right:0;height:48rpx;background:linear-gradient(180deg,transparent,rgba(160,130,80,.25));border-radius:0 0 36rpx 36rpx;pointer-events:none;z-index:1}
+
+/* 平签 */
+.ac-ping{background:linear-gradient(180deg,#c8a060,#8a6838);border:3rpx solid rgba(180,150,90,.45);color:#fff8f0;box-shadow:0 12rpx 32rpx rgba(0,0,0,.1)}
+.ac-ping::before{content:"";position:absolute;inset:8rpx;border:2rpx solid rgba(220,190,140,.2);border-radius:28rpx;pointer-events:none;z-index:1}
+.ac-ping .ac-grade{background:rgba(220,190,140,.25);color:#fff8f0;font-weight:600}
+.ac-ping .ac-seal{background:rgba(180,70,50,.85);color:#fff0e0;box-shadow:0 2rpx 6rpx rgba(0,0,0,.1);border:2rpx solid rgba(255,255,255,.1)}
+.ac-ping .ac-name{font-size:28rpx;color:#fff8f0}
+.ac-ping .ac-text{color:rgba(255,248,240,.8)}
+.ac-ping .ac-bottom{border-color:rgba(220,190,140,.2)}
+.ac-ping .ac-action{color:rgba(255,248,240,.55)}
+.ac-ping .ac-bottom-deco{position:absolute;bottom:0;left:0;right:0;height:40rpx;background:linear-gradient(180deg,transparent,rgba(80,60,30,.35));border-radius:0 0 36rpx 36rpx;pointer-events:none;z-index:1}
+
+/* 未收集 */
+.ac-lock{background:linear-gradient(180deg,#1a1515,#100c0c);border:2rpx dashed rgba(255,209,102,.12);color:rgba(255,244,223,.15);display:flex;align-items:center;justify-content:center;box-shadow:0 12rpx 32rpx rgba(0,0,0,.1);min-height:380rpx}
+.ac-lock-inner{display:flex;flex-direction:column;align-items:center;gap:16rpx}
+.ac-lock-icon{width:72rpx;height:88rpx;border-radius:20rpx;border:3rpx dashed rgba(255,209,102,.12);display:flex;align-items:center;justify-content:center;font-size:44rpx;color:rgba(255,209,102,.12);font-family:Georgia,serif}
+.ac-lock-text{font-size:20rpx;color:rgba(255,244,223,.12);letter-spacing:4rpx}
+
+/* 牌册统计 */
+.album-stats{display:flex;gap:16rpx;margin-top:32rpx}
+.album-stat{flex:1;border-radius:28rpx;border:2rpx solid rgba(255,209,102,.18);background:rgba(255,209,102,.06);padding:20rpx;text-align:center}
+.album-stat b{display:block;font-family:Georgia,serif;font-size:40rpx;color:#ffd166}
+.album-stat span{font-size:18rpx;color:#e6bd82}
+
+/* ===== 漂流签样式 ===== */
+.drift-list{margin-top:32rpx;display:flex;flex-direction:column;gap:24rpx}
+.drift-item{position:relative;border-radius:36rpx;padding:28rpx 32rpx;background:linear-gradient(180deg,#1e0e0c,#140807);border:2rpx solid rgba(255,209,102,.14);box-shadow:0 8rpx 28rpx rgba(0,0,0,.2)}
+.drift-meta{display:flex;align-items:center;gap:16rpx;margin-bottom:16rpx}
+.drift-avatar{width:56rpx;height:56rpx;border-radius:50%;background:linear-gradient(135deg,#ffd166,#c51f1a);display:flex;align-items:center;justify-content:center;font-size:22rpx;color:#fff;font-weight:700}
+.drift-name{font-size:24rpx;color:#e6bd82;font-weight:600}
+.drift-tag{font-size:18rpx;color:#ffd166;background:rgba(255,209,102,.1);padding:2rpx 12rpx;border-radius:6rpx;margin-left:auto}
+.drift-quote{font-size:24rpx;color:rgba(255,244,223,.75);line-height:1.55;margin-bottom:16rpx}
+.drift-from{font-size:20rpx;color:rgba(230,189,130,.45);font-style:italic}
+.drift-actions{display:flex;gap:16rpx;margin-top:20rpx}
+.drift-btn{flex:1;padding:14rpx 0;border-radius:20rpx;border:2rpx solid rgba(255,209,102,.2);background:rgba(255,209,102,.06);color:#e6bd82;font-size:22rpx;text-align:center}
+.drift-btn.primary{background:linear-gradient(180deg,#ffe08a,#d99235);color:#3a0f08;border:none;font-weight:700}
+
+/* 漂流签tab切换 */
+.drift-tabs{display:flex;gap:12rpx;margin-top:24rpx}
+.drift-tab{flex:1;padding:16rpx 0;border-radius:20rpx;border:2rpx solid rgba(255,209,102,.14);background:rgba(255,209,102,.04);color:#e6bd82;font-size:22rpx;text-align:center}
+.drift-tab.on{background:rgba(255,209,102,.1);color:#ffd166;border-color:rgba(255,209,102,.3);font-weight:700}
+
+/* 好友申请弹窗 */
+.drift-modal-overlay{position:absolute;inset:0;background:rgba(10,2,1,.82);display:flex;align-items:center;justify-content:center;padding:40rpx;z-index:50}
+.drift-modal{width:100%;border-radius:48rpx;border:2rpx solid rgba(255,209,102,.22);background:linear-gradient(160deg,#2a1512,#180a08);padding:48rpx;text-align:center;box-shadow:0 48rpx 120rpx rgba(0,0,0,.4)}
+.drift-modal-avatar{width:112rpx;height:112rpx;border-radius:50%;background:linear-gradient(135deg,#ffd166,#c51f1a);margin:0 auto 24rpx;display:flex;align-items:center;justify-content:center;font-size:44rpx;color:#fff;font-weight:800}
+.drift-modal-title{font-family:Georgia,serif;font-size:40rpx;color:#ffd166;margin-bottom:8rpx}
+.drift-modal-sub{font-size:24rpx;color:#e6bd82;margin-bottom:28rpx}
+.drift-modal-note{font-size:22rpx;color:rgba(230,189,130,.6);line-height:1.5;margin-bottom:32rpx;padding:20rpx;border-radius:20rpx;background:rgba(255,209,102,.06);border:2rpx solid rgba(255,209,102,.1)}
+.drift-modal-actions{display:flex;gap:20rpx}
+.drift-modal-btn{flex:1;padding:22rpx 0;border-radius:24rpx;border:2rpx solid rgba(255,209,102,.2);background:transparent;color:#e6bd82;font-size:26rpx}
+.drift-modal-btn.primary{background:linear-gradient(180deg,#ffe08a,#d99235);color:#3a0f08;border:none;font-weight:700}
+
+/* 漂流签底部送出入口 */
+.drift-send-bar{position:absolute;bottom:0;left:0;right:0;padding:24rpx 32rpx;background:rgba(24,5,4,.95);border-top:2rpx solid rgba(255,209,102,.18);display:flex;align-items:center;gap:20rpx}
+.drift-send-icon{width:64rpx;height:64rpx;border-radius:50%;background:linear-gradient(135deg,#ffd166,#c51f1a);display:flex;align-items:center;justify-content:center;font-size:28rpx;color:#fff}
+.drift-send-info{flex:1}
+.drift-send-info b{color:#ffd166;display:block;font-size:26rpx;margin-bottom:4rpx}
+.drift-send-info text{color:#e6bd82;font-size:22rpx}
+.drift-send-btn{padding:14rpx 28rpx;border-radius:20rpx;border:none;background:linear-gradient(180deg,#ffe08a,#d99235);color:#3a0f08;font-size:22rpx;font-weight:700}
