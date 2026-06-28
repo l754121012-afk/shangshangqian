@@ -1110,16 +1110,25 @@ page {
 /* ===== 彩蛋签边框主题色流转特效 ===== */
 .ac-egg,.card-egg{position:relative}
 /* 彩蛋签边框流光特效：用伪元素沿边框移动的光点 */
-.ac-egg::after,.card-egg::after{content:"";position:absolute;inset:-4rpx;border-radius:inherit;z-index:5;pointer-events:none;overflow:hidden}
-/* 桃花 - 粉色大流光 */
-.ac-egg-peach::after,.draw-egg-peach::after{background:conic-gradient(from var(--egg-angle,0deg) at 50% 50%,transparent 0%,transparent 35%,rgba(255,180,220,.45) 40%,rgba(255,150,200,.6) 45%,rgba(255,180,220,.45) 50%,transparent 55%,transparent 100%);animation:eggAngleSpin 2.5s linear infinite;padding:4rpx;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor}
-/* 金榜 - 金色大流光 */
-.ac-egg-golden::after,.draw-egg-golden::after{background:conic-gradient(from var(--egg-angle,0deg) at 50% 50%,transparent 0%,transparent 35%,rgba(255,220,100,.45) 40%,rgba(255,200,50,.6) 45%,rgba(255,220,100,.45) 50%,transparent 55%,transparent 100%);animation:eggAngleSpin 2.5s linear infinite;padding:4rpx;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor}
-/* 归家 - 蓝色大流光 */
-.ac-egg-home::after,.draw-egg-home::after{background:conic-gradient(from var(--egg-angle,0deg) at 50% 50%,transparent 0%,transparent 35%,rgba(150,200,255,.45) 40%,rgba(100,180,255,.6) 45%,rgba(150,200,255,.45) 50%,transparent 55%,transparent 100%);animation:eggAngleSpin 2.5s linear infinite;padding:4rpx;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor}
-/* 远行 - 青绿大流光 */
-.ac-egg-travel::after,.draw-egg-travel::after{background:conic-gradient(from var(--egg-angle,0deg) at 50% 50%,transparent 0%,transparent 35%,rgba(150,230,220,.45) 40%,rgba(128,220,200,.6) 45%,rgba(150,230,220,.45) 50%,transparent 55%,transparent 100%);animation:eggAngleSpin 2.5s linear infinite;padding:4rpx;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor}
-@keyframes eggAngleSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.ac-egg::after,.card-egg::after{content:"";position:absolute;width:10%;height:4rpx;z-index:5;border-radius:2rpx}
+/* 桃花 - 粉色光点沿边框流动 */
+.ac-egg-peach::after,.draw-egg-peach::after{background:linear-gradient(90deg,transparent,rgba(255,180,220,.8),rgba(255,150,200,.9),rgba(255,180,220,.8),transparent);box-shadow:0 0 12rpx rgba(255,150,200,.4);animation:flowAll 4s ease-in-out infinite}
+/* 金榜 - 金色光点沿边框流动 */
+.ac-egg-golden::after,.draw-egg-golden::after{background:linear-gradient(90deg,transparent,rgba(255,220,100,.8),rgba(255,200,50,.9),rgba(255,220,100,.8),transparent);box-shadow:0 0 12rpx rgba(255,200,50,.4);animation:flowAll 4s ease-in-out infinite}
+/* 归家 - 蓝色光点沿边框流动 */
+.ac-egg-home::after,.draw-egg-home::after{background:linear-gradient(90deg,transparent,rgba(150,200,255,.8),rgba(100,180,255,.9),rgba(150,200,255,.8),transparent);box-shadow:0 0 12rpx rgba(100,180,255,.4);animation:flowAll 4s ease-in-out infinite}
+/* 远行 - 青绿光点沿边框流动 */
+.ac-egg-travel::after,.draw-egg-travel::after{background:linear-gradient(90deg,transparent,rgba(150,230,220,.8),rgba(128,220,200,.9),rgba(150,230,220,.8),transparent);box-shadow:0 0 12rpx rgba(128,220,200,.4);animation:flowAll 4s ease-in-out infinite}
+@keyframes flowAll{
+  0%{top:0;left:-10%;width:10%;height:4rpx}
+  22%{top:0;left:110%;width:10%;height:4rpx}
+  23%{top:-10%;left:calc(100% - 4rpx);width:4rpx;height:10%}
+  47%{top:110%;left:calc(100% - 4rpx);width:4rpx;height:10%}
+  48%{top:calc(100% - 4rpx);left:110%;width:10%;height:4rpx}
+  72%{top:calc(100% - 4rpx);left:-10%;width:10%;height:4rpx}
+  73%{top:110%;left:0;width:4rpx;height:10%}
+  100%{top:-10%;left:0;width:4rpx;height:10%}
+}100%{transform:rotate(360deg)}}
 
 /* 冷色调签抽签页适配：seal和grade用浅色保证可读 */
 .draw-egg-home .seal{background:rgba(13,71,161,.7);color:#bbdefb!important;box-shadow:0 2rpx 6rpx rgba(0,0,0,.2)}
@@ -1128,3 +1137,26 @@ page {
 .draw-egg-travel .seal{background:rgba(0,105,92,.7);color:#b2dfdb!important;box-shadow:0 2rpx 6rpx rgba(0,0,0,.2)}
 .draw-egg-travel .seal text{color:#b2dfdb!important}
 .draw-egg-travel .rarity{color:#b2dfdb!important}
+
+/* 冷色调签抽签页适配：游戏卡面蓝金/青金配色 */
+/* 归家签 - 深蓝底+暖金光晕+暗金seal+银白过渡 */
+.draw-egg-peach .rarity,.draw-egg-golden .rarity{color:#fff8e1}
+.draw-egg-home .rarity{color:#e3f2fd}
+.draw-egg-travel .rarity{color:#e0f2f1}
+.draw-egg-home{background:radial-gradient(circle at 80% 20%,rgba(234,195,89,.18) 0%,transparent 40%),radial-gradient(circle at 50% 0%,#90caf9,#1565c0 35%,#0d47a1 70%)!important}
+.draw-egg-home .seal{background:linear-gradient(135deg,#b8860b,#d4af37);color:#fffde7!important;box-shadow:0 2rpx 8rpx rgba(0,0,0,.25),inset 0 1rpx 2rpx rgba(255,255,255,.2)}
+.draw-egg-home .seal text{color:#fffde7!important}
+.draw-egg-home .rarity{color:#bbdefb!important;text-shadow:0 1rpx 3rpx rgba(0,0,0,.3)}
+.draw-egg-home .kw{color:#e3f2fd!important}
+.draw-egg-home .txt{color:rgba(187,222,251,.9)!important}
+.draw-egg-home .pill text{color:#ffd54f!important}
+.draw-egg-home .micro text{color:#ffd54f!important}
+/* 远行签 - 青绿底+暖金光晕+暗金seal+冰青过渡 */
+.draw-egg-travel{background:radial-gradient(circle at 80% 20%,rgba(234,195,89,.15) 0%,transparent 40%),radial-gradient(circle at 50% 0%,#80cbc4,#00897b 35%,#004d40 70%)!important}
+.draw-egg-travel .seal{background:linear-gradient(135deg,#b8860b,#d4af37);color:#fffde7!important;box-shadow:0 2rpx 8rpx rgba(0,0,0,.25),inset 0 1rpx 2rpx rgba(255,255,255,.2)}
+.draw-egg-travel .seal text{color:#fffde7!important}
+.draw-egg-travel .rarity{color:#b2dfdb!important;text-shadow:0 1rpx 3rpx rgba(0,0,0,.3)}
+.draw-egg-travel .kw{color:#e0f2f1!important}
+.draw-egg-travel .txt{color:rgba(178,223,219,.9)!important}
+.draw-egg-travel .pill text{color:#ffd54f!important}
+.draw-egg-travel .micro text{color:#ffd54f!important}
