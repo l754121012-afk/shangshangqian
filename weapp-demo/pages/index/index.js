@@ -143,13 +143,13 @@ Page({
 
   pickCard() {
     const r = Math.random()
-    // 彩蛋签 6% (约16次出现1次)
-    if (r < .06) {
+    // 彩蛋签 4.5% (约22次出现1次)
+    if (r < .045) {
       const bonusCards = cards.filter(c => c.type === 'bonus')
       return bonusCards[Math.floor(Math.random() * bonusCards.length)]
     }
-    // 解签 6.67% (约15次出现1次)
-    if (r < .1067) {
+    // 解签 5% (约20次出现1次)
+    if (r < .095) {
       const negativeCards = cards.filter(c => c.type === 'negative')
       return negativeCards[Math.floor(Math.random() * negativeCards.length)]
     }
@@ -216,7 +216,7 @@ Page({
       wx.showToast({ title: '请先抽一张签', icon: 'none' })
       return
     }
-    if (card.type !== 'good') {
+    if (card.type !== 'good' && card.type !== 'bonus') {
       wx.showToast({ title: '这类牌不出现感谢入口', icon: 'none' })
       return
     }

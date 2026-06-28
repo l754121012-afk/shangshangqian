@@ -30,10 +30,24 @@
       <view class="quota">{{quotaText}}</view>
       <view class="deck {{current.grade === '大吉签' ? 'rare' : ''}} {{shareFlying ? 'share-card-flying' : ''}}">
         <view class="aura"></view>
-        <view class="card {{cardClass}} {{current.grade === '大吉签' ? 'card-daji' : ''}} {{current.grade === '上上签' ? 'card-shangshang' : ''}}">
+        <view class="card {{cardClass}} {{current.grade === '大吉签' ? 'card-daji' : ''}} {{current.grade === '上上签' ? 'card-shangshang' : ''}} {{current.grade === '彩蛋签' ? 'card-egg draw-egg-' + current.theme : ''}}">
           <view class="card-sweep-wrap" wx:if="{{current.grade === '大吉签'}}">
             <view class="card-sweep"></view>
             <view class="card-glow-orbit"><view class="cg1"></view><view class="cg2"></view></view>
+          </view>
+          <view class="draw-egg-deco" wx:if="{{current.grade === '彩蛋签'}}">
+            <view wx:if="{{current.theme === 'peach'}}">
+              <view class="draw-egg-glow"></view><view class="draw-egg-crown"></view><view class="draw-egg-stem"></view>
+            </view>
+            <view wx:elif="{{current.theme === 'golden'}}">
+              <view class="draw-egg-glow"></view><view class="draw-egg-body"></view>
+            </view>
+            <view wx:elif="{{current.theme === 'home'}}">
+              <view class="draw-egg-moon"></view><view class="draw-egg-roof"></view><view class="draw-egg-wall"></view>
+            </view>
+            <view wx:elif="{{current.theme === 'travel'}}">
+              <view class="draw-egg-haze"></view><view class="draw-egg-bg-mt"></view><view class="draw-egg-fg-mt"></view>
+            </view>
           </view>
           <view class="rarity">{{current.grade || '今日签'}}</view>
           <view class="seal">

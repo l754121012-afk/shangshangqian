@@ -938,7 +938,7 @@ page {
 
 /* 归家签 - 暖橙 */
 .ac-egg-home{background:radial-gradient(circle at 50% 0%,#ffcc80,#fb8c00 35%,#bf360c 70%);border:2.5px solid #ffe0b2;color:#fff3e0;box-shadow:0 6px 18px rgba(0,0,0,.25),0 0 12px rgba(251,140,0,.3),inset 0 0 20px rgba(0,0,0,.08)}
-.ac-egg-home::before{border-color:rgba(255,243,224,.3)}
+.ac-egg-home::before{border-color:rgba(227,242,253,.3)}
 .ac-egg-home .card-v3-grade{background:#fff3e0;color:#bf360c;box-shadow:0 2px 5px rgba(0,0,0,.2)}
 .ac-egg-home .card-v3-seal{background:#e65100;color:#fff3e0;box-shadow:0 3px 8px rgba(0,0,0,.3)}
 .ac-egg-home .card-v3-name{color:#fff3e0}
@@ -1099,3 +1099,34 @@ page {
 .ac-egg-travel .egg-star1{position:absolute;top:120rpx;right:40rpx;width:12rpx;height:12rpx;border:3rpx solid rgba(255,255,255,.30);transform:rotate(45deg)}
 .ac-egg-travel .egg-star2{position:absolute;top:160rpx;left:60rpx;width:10rpx;height:10rpx;border:3rpx solid rgba(255,255,255,.30);transform:rotate(45deg)}
 .ac-egg-travel .egg-star3{position:absolute;top:200rpx;right:160rpx;width:8rpx;height:8rpx;border:3rpx solid rgba(255,255,255,.26);transform:rotate(45deg)}
+
+/* ===== 抽签页彩蛋签样式 ===== */
+.card-egg{position:relative;border-radius:16rpx}
+.draw-egg-peach{background:radial-gradient(circle at 50% 0%,#ff9ecd,#e8457c 35%,#c2185b 70%)!important;border:2rpx solid #f8bbd0!important;color:#fce4ec!important;box-shadow:0 16rpx 40rpx rgba(0,0,0,.35),inset 0 0 16rpx rgba(0,0,0,.08),0 0 20rpx rgba(233,69,124,.2)!important}
+.draw-egg-golden{background:radial-gradient(circle at 50% 0%,#ffd54f,#f9a825 35%,#e65100 70%)!important;border:2rpx solid #ffe082!important;color:#fff8e1!important;box-shadow:0 16rpx 40rpx rgba(0,0,0,.35),inset 0 0 16rpx rgba(0,0,0,.08),0 0 20rpx rgba(249,168,37,.2)!important}
+.draw-egg-home{background:radial-gradient(circle at 50% 0%,#90caf9,#1565c0 35%,#0d47a1 70%)!important;border:2rpx solid #90caf9!important;color:#e3f2fd!important;box-shadow:0 16rpx 40rpx rgba(0,0,0,.35),inset 0 0 16rpx rgba(0,0,0,.08),0 0 20rpx rgba(21,101,192,.2)!important}
+.draw-egg-travel{background:radial-gradient(circle at 50% 0%,#80cbc4,#00897b 35%,#004d40 70%)!important;border:2rpx solid #b2dfdb!important;color:#e0f2f1!important;box-shadow:0 16rpx 40rpx rgba(0,0,0,.35),inset 0 0 16rpx rgba(0,0,0,.08),0 0 20rpx rgba(0,137,123,.2)!important}
+.draw-egg-deco{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;border-radius:16rpx}
+/* 桃花 */
+.draw-egg-peach .draw-egg-glow{position:absolute;bottom:-20rpx;right:-20rpx;width:160rpx;height:160rpx;background:radial-gradient(circle,rgba(255,180,210,.18),transparent 70%);filter:blur(8px)}
+.draw-egg-peach .draw-egg-crown{position:absolute;bottom:18rpx;right:8rpx;width:90rpx;height:70rpx;background:radial-gradient(ellipse at 50% 80%,rgba(255,200,220,.22),rgba(255,150,190,.08));border-radius:30% 70% 50% 50% / 40% 30% 70% 60%}
+.draw-egg-peach .draw-egg-stem{position:absolute;bottom:8rpx;right:45rpx;width:10rpx;height:50rpx;background:linear-gradient(0deg,rgba(255,255,255,.06),rgba(255,200,220,.14));border-radius:40%;transform:rotate(-5deg)}
+/* 金榜 */
+.draw-egg-golden .draw-egg-glow{position:absolute;bottom:-15rpx;right:-15rpx;width:140rpx;height:140rpx;background:radial-gradient(circle,rgba(255,200,50,.15),transparent 70%);filter:blur(10px)}
+.draw-egg-golden .draw-egg-body{position:absolute;bottom:20rpx;right:20rpx;width:75rpx;height:110rpx;background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.05));border-radius:4rpx;border-left:3rpx solid rgba(255,255,255,.1);border-right:3rpx solid rgba(255,255,255,.1)}
+/* 归家 */
+.draw-egg-home .draw-egg-moon{position:absolute;bottom:-10rpx;right:-10rpx;width:130rpx;height:130rpx;background:radial-gradient(circle,rgba(150,200,255,.12),transparent 70%);filter:blur(12px)}
+.draw-egg-home .draw-egg-roof{position:absolute;bottom:58rpx;right:12rpx;width:100rpx;height:35rpx;background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.08));border-radius:50rpx 50rpx 0 0}
+.draw-egg-home .draw-egg-wall{position:absolute;bottom:15rpx;right:22rpx;width:80rpx;height:45rpx;background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.06));border-radius:5rpx}
+/* 远行 */
+.draw-egg-travel .draw-egg-haze{position:absolute;bottom:-15rpx;right:-15rpx;width:140rpx;height:140rpx;background:radial-gradient(circle,rgba(128,203,196,.12),transparent 70%);filter:blur(10px)}
+.draw-egg-travel .draw-egg-bg-mt{position:absolute;bottom:10rpx;right:-10rpx;width:130rpx;height:70rpx;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border-radius:50% 55% 0 0;filter:blur(2rpx)}
+.draw-egg-travel .draw-egg-fg-mt{position:absolute;bottom:10rpx;right:50rpx;width:80rpx;height:50rpx;background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.06));border-radius:45% 55% 0 0}
+
+/* ===== 彩蛋签边框主题色流转特效 ===== */
+.card-egg::after,.ac-egg::after{content:"";position:absolute;inset:-2rpx;border-radius:inherit;pointer-events:none;z-index:4}
+.draw-egg-peach::after,.ac-egg-peach::after{background:conic-gradient(from 0deg,transparent 0%,rgba(255,150,200,.3) 15%,transparent 30%);animation:eggBorderSpin 3s linear infinite}
+.draw-egg-golden::after,.ac-egg-golden::after{background:conic-gradient(from 0deg,transparent 0%,rgba(255,200,50,.3) 15%,transparent 30%);animation:eggBorderSpin 3s linear infinite}
+.draw-egg-home::after,.ac-egg-home::after{background:conic-gradient(from 0deg,transparent 0%,rgba(100,180,255,.3) 15%,transparent 30%);animation:eggBorderSpin 3s linear infinite}
+.draw-egg-travel::after,.ac-egg-travel::after{background:conic-gradient(from 0deg,transparent 0%,rgba(128,220,200,.3) 15%,transparent 30%);animation:eggBorderSpin 3s linear infinite}
+@keyframes eggBorderSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
