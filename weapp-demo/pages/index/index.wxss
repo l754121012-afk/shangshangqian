@@ -848,3 +848,10 @@ page {
 .card.card-shangshang .seal{background:#c01818!important}
 .card.card-shangshang .kw{color:#4a2818!important;letter-spacing:2rpx}
 .card.card-shangshang .txt{color:rgba(106,64,48,.88)!important}
+
+/* 比手气卡飞行动画 */
+.share-card-flying{animation:cardFlyOut 1.2s ease-in forwards}
+@keyframes cardFlyOut{0%{transform:scale(1);opacity:1}60%{transform:scale(.4) translateY(-80rpx);opacity:.8}100%{transform:scale(.15) translateY(-200rpx);opacity:0}}
+/* 好友列表中"我"的高亮 */
+.friend-me{background:rgba(255,209,102,.12)!important;border-color:rgba(255,209,102,.35)!important}
+.friend-me .friend-meta view{color:#ffd166}

@@ -169,14 +169,14 @@
 
   <view wx:if="{{tab === 'friends'}}" class="page" style="padding-bottom:80rpx">
     <view class="title">好友<text>比手气</text></view>
-    <view class="hint">比较今日手气和卡牌稀有度，不做羞辱性排名。</view>
+    <view class="hint">你的今日好运值排名第{{myRank}}名。{{shareReceived ? '你刚送出的比手气卡已计入。' : '点击抽签页"生成比手气卡"可送达。'}}</view>
     <view class="friend-list">
-      <view wx:for="{{friends}}" wx:key="name" class="friend">
+      <view wx:for="{{friends}}" wx:key="name" class="friend {{item.isMe ? 'friend-me' : ''}}">
         <view class="rank">{{index + 1}}</view>
         <view class="avatar"></view>
         <view class="friend-meta">
-          <view>{{item.name}}</view>
-          <text>{{item.rarity}} · {{item.card}} · 好运值 {{item.score}}</text>
+          <view>{{item.name}}{{item.isMe ? '（我）' : ''}}</view>
+          <text>{{item.grade}} · {{item.card}} · 好运值 {{item.score}}</text>
         </view>
       </view>
     </view>

@@ -45,7 +45,9 @@ Page({
     driftSubTab: 'received',
     driftList: [],
     friendModalVisible: false,
-    friendModal: {}
+    friendModal: {},
+    shareFlying: false,
+    shareReceived: false
   },
 
   onLoad() {
@@ -137,9 +139,8 @@ Page({
   },
 
   onSupport() {
-    this.showMockAd('这是验证成功后的轻支持入口，用来测试用户是否接受这种感谢式收益点。', () => {
-      wx.showToast({ title: '已模拟添一束好运火', icon: 'none' })
-    })
+    wx.showToast({ title: '感谢支持！好运火已点亮', icon: 'none', duration: 2000 })
+    this.setData({ verifyShown: false })
   },
 
   onCollect() {
@@ -180,7 +181,14 @@ Page({
     wx.showToast({ title: '负面牌已合并消失', icon: 'none' })
   },
 
-  onShareCard() { wx.showToast({ title: '已生成比手气卡', icon: 'none' }) },
+  onShareCard() {
+    this.setData({ shareFlying: true })
+    setTimeout(() => {
+      this.setData({ shareFlying: false, shareReceived: true })
+      this.setData({ tab: 'friends' })
+      wx.showToast({ title: '比手气卡已送达好友榜', icon: 'none' })
+    }, 1200)
+  },
 
   renderAll() {
     const left = Math.max(0, 3 - this.data.freeUsed)
@@ -200,12 +208,21 @@ Page({
     const driftList = mockDrift
 
     const cur = this.data.current.id ? this.data.current : cards[0]
+    const myScore = cur.score || 0
+    const myGrade = cur.grade || '上签'
+    const myCard = cur.name || '稳住'
+    // 模拟好友数据，分数有基础值+随机波动
+    const friendsBase = [
+      { name: '阿泽', card: '稳步进财', grade: '上上签', baseScore: 85 },
+      { name: '小林', card: '回神', grade: '上签', baseScore: 72 },
+      { name: 'Momo', card: '轻装', grade: '上签', baseScore: 68 }
+    ]
     const friends = [
-      { name: '你', card: cur.name, rarity: cur.rarity, score: cur.score },
-      { name: '阿泽', card: '稳步进财', rarity: 'SR', score: 86 },
-      { name: '小林', card: '回神', rarity: 'R', score: 73 },
-      { name: 'Momo', card: '轻装', rarity: 'R', score: 69 }
+      { name: '我', card: myCard, grade: myGrade, score: myScore, isMe: true },
+      ...friendsBase.map(f => ({ ...f, score: f.baseScore + Math.floor(Math.random() * 8) }))
     ].sort((a, b) => b.score - a.score)
+    // 计算我的排名
+    const myRank = friends.findIndex(f => f.isMe) + 1
 
     this.setData({
       quotaText: left > 0 ? `今日免费签 ${left} / 3` : '今日免费签已用完 · 额外抽签需看广告',
@@ -215,7 +232,9 @@ Page({
       albumSSCount,
       albumSCount,
       driftList,
-      friends
+      friends,
+      myRank: myRank,
+      shareReceived: this.data.shareReceived || false
     })
   },
 
