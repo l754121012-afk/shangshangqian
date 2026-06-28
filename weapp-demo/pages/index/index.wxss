@@ -1110,21 +1110,24 @@ page {
 /* ===== 彩蛋签边框主题色流转特效 ===== */
 .ac-egg,.card-egg{position:relative}
 /* 彩蛋签边框流光特效：用伪元素沿边框移动的光点 */
-.ac-egg::after,.card-egg::after{content:"";position:absolute;top:0;left:-30%;width:30%;height:3rpx;z-index:5;border-radius:2rpx}
+.ac-egg::after,.card-egg::after{content:"";position:absolute;width:20%;height:3rpx;z-index:5;border-radius:2rpx;top:0;left:-20%}
 /* 桃花 - 粉色流光 */
-.ac-egg-peach::after,.draw-egg-peach::after{background:linear-gradient(90deg,transparent,rgba(255,180,220,.6),transparent);animation:borderFlow 3s ease-in-out infinite;box-shadow:0 0 8rpx rgba(255,150,200,.3)}
+.ac-egg-peach::after,.draw-egg-peach::after{background:linear-gradient(90deg,transparent,rgba(255,180,220,.7),transparent);animation:flowTop 1.5s ease-in-out infinite,flowRight 1.5s ease-in-out 1.5s infinite,flowBottom 1.5s ease-in-out 3s infinite,flowLeft 1.5s ease-in-out 4.5s infinite;box-shadow:0 0 8rpx rgba(255,150,200,.3)}
 /* 金榜 - 金色流光 */
-.ac-egg-golden::after,.draw-egg-golden::after{background:linear-gradient(90deg,transparent,rgba(255,220,100,.6),transparent);animation:borderFlow 3s ease-in-out infinite;box-shadow:0 0 8rpx rgba(255,200,50,.3)}
+.ac-egg-golden::after,.draw-egg-golden::after{background:linear-gradient(90deg,transparent,rgba(255,220,100,.7),transparent);animation:flowTop 1.5s ease-in-out infinite,flowRight 1.5s ease-in-out 1.5s infinite,flowBottom 1.5s ease-in-out 3s infinite,flowLeft 1.5s ease-in-out 4.5s infinite;box-shadow:0 0 8rpx rgba(255,200,50,.3)}
 /* 归家 - 蓝色流光 */
-.ac-egg-home::after,.draw-egg-home::after{background:linear-gradient(90deg,transparent,rgba(150,200,255,.6),transparent);animation:borderFlow 3s ease-in-out infinite;box-shadow:0 0 8rpx rgba(100,180,255,.3)}
+.ac-egg-home::after,.draw-egg-home::after{background:linear-gradient(90deg,transparent,rgba(150,200,255,.7),transparent);animation:flowTop 1.5s ease-in-out infinite,flowRight 1.5s ease-in-out 1.5s infinite,flowBottom 1.5s ease-in-out 3s infinite,flowLeft 1.5s ease-in-out 4.5s infinite;box-shadow:0 0 8rpx rgba(100,180,255,.3)}
 /* 远行 - 青绿流光 */
-.ac-egg-travel::after,.draw-egg-travel::after{background:linear-gradient(90deg,transparent,rgba(150,230,220,.6),transparent);animation:borderFlow 3s ease-in-out infinite;box-shadow:0 0 8rpx rgba(128,220,200,.3)}
-@keyframes borderFlow{0%{top:0;left:-30%}25%{top:0;left:100%}50%{top:100%;left:100%;width:3rpx;height:30%}75%{top:100%;left:-30%}100%{top:0;left:-30%}}
+.ac-egg-travel::after,.draw-egg-travel::after{background:linear-gradient(90deg,transparent,rgba(150,230,220,.7),transparent);animation:flowTop 1.5s ease-in-out infinite,flowRight 1.5s ease-in-out 1.5s infinite,flowBottom 1.5s ease-in-out 3s infinite,flowLeft 1.5s ease-in-out 4.5s infinite;box-shadow:0 0 8rpx rgba(128,220,200,.3)}
+@keyframes flowTop{0%{top:0;left:-20%;width:20%;height:3rpx}100%{top:0;left:100%;width:20%;height:3rpx}}
+@keyframes flowRight{0%{top:0;left:100%;width:3rpx;height:20%;left:calc(100% - 3rpx)}100%{top:100%;left:calc(100% - 3rpx);width:3rpx;height:20%}}
+@keyframes flowBottom{0%{top:calc(100% - 3rpx);left:100%;width:20%;height:3rpx}100%{top:calc(100% - 3rpx);left:-20%;width:20%;height:3rpx}}
+@keyframes flowLeft{0%{top:100%;left:-20%;width:3rpx;height:20%;top:calc(100% - 20%)}100%{top:0;left:-3rpx;width:3rpx;height:20%}}
 
 /* 冷色调签抽签页适配：seal和grade用浅色保证可读 */
-.draw-egg-home .seal{background:#0d47a1;color:#e3f2fd!important}
-.draw-egg-home .seal text{color:#e3f2fd!important}
-.draw-egg-home .rarity{color:#e3f2fd!important}
-.draw-egg-travel .seal{background:#00695c;color:#e0f2f1!important}
+.draw-egg-home .seal{background:#5d4037;color:#ffe0b2!important}
+.draw-egg-home .seal text{color:#ffe0b2!important}
+.draw-egg-home .rarity{color:#ffe0b2!important}
+.draw-egg-travel .seal{background:#37474f;color:#e0f2f1!important}
 .draw-egg-travel .seal text{color:#e0f2f1!important}
 .draw-egg-travel .rarity{color:#e0f2f1!important}
