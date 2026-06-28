@@ -59,7 +59,7 @@
           <view wx:if="{{canTurn}}" class="btn sub action-btn" bindtap="onTurn">看广告转运</view>
         </view>
         <view class="btn sub full-action" bindtap="onBonus">看广告补充签</view>
-        <view wx:if="{{current.type === 'negative'}}" class="btn danger full-action" bindtap="onDissolve">我已克服 / 我已解决</view>
+        <view wx:if="{{current.type === 'negative'}}" class="btn danger full-action" bindtap="openDissolveInput">我已克服 / 我已解决</view>
       </view>
       <view wx:if="{{verifyShown}}" class="msg">
         <text>感谢收获</text>
@@ -73,8 +73,17 @@
     <view class="title">我的<text>好运牌册</text></view>
     <view class="hint">每种签各自样式统一，可多张并存。大吉签含专属动效。</view>
     <view class="album-v2">
-      <block wx:for="{{albumDisplay}}" wx:key="aid">
-        <view wx:if="{{item.grade === '大吉签'}}" class="album-card ac-daji">
+      <block wx:for="{{albumDisplay}}" wx:key="id">
+        <view wx:if="{{item.isGroupHeader}}" class="album-section-title">{{item.grade}} <text>{{item.collectedCount}}/{{item.totalCount}}</text></view>
+
+        <view wx:elif="{{item.locked}}" class="album-card {{item.grade === '大吉签' ? 'ac-daji' : item.grade === '上上签' ? 'ac-shangshang' : item.grade === '上签' ? 'ac-shang' : 'ac-ping'}} ac-locked">
+          <view class="ac-locked-mask">
+            <view class="ac-locked-icon">?</view>
+            <view class="ac-locked-text">尚未收集</view>
+          </view>
+        </view>
+
+        <view wx:elif="{{item.grade === '大吉签'}}" class="album-card ac-daji">
           <view class="ac-glow-orbit"><view class="ac-g1"></view><view class="ac-g2"></view></view>
           <view class="ac-sweep"></view>
           <view class="ac-daji-texture">
@@ -113,9 +122,6 @@
           </view>
           <view class="ac-bottom-deco"></view>
         </view>
-        <view wx:elif="{{item.locked}}" class="album-card ac-lock">
-          <view class="ac-lock-inner"><view class="ac-lock-icon">?</view><view class="ac-lock-text">尚未收集</view></view>
-        </view>
       </block>
     </view>
     <view class="album-stats">
@@ -149,7 +155,7 @@
       </view>
     </view>
     <view wx:if="{{friendModalVisible}}" class="drift-modal-overlay" bindtap="closeFriendModal">
-      <view class="drift-modal" catchtap="">
+      <view class="drift-modal" catchtap="preventBubble">
         <view class="drift-modal-avatar">{{friendModal.avatar}}</view>
         <view class="drift-modal-title">{{friendModal.name}} 想加你为好友</view>
         <view class="drift-modal-sub">来自漂流签 · {{friendModal.grade}}</view>
@@ -207,7 +213,7 @@
 
 
   <view wx:if="{{surveyVisible}}" class="survey-overlay" bindtap="closeSurvey">
-    <view class="survey-card" catchtap="">
+    <view class="survey-card" catchtap="preventBubble">
       <view class="survey-header">
         <view class="survey-title">用户反馈问卷</view>
         <view class="survey-sub">完成问卷可获得1次免费抽签机会</view>
@@ -239,7 +245,6 @@
           <view class="survey-opt {{surveyAnswers.q3 === 'more' ? 'on' : ''}}" bindtap="onSurveyPick" data-q="q3" data-val="more">更多签卡内容</view>
           <view class="survey-opt {{surveyAnswers.q3 === 'share' ? 'on' : ''}}" bindtap="onSurveyPick" data-q="q3" data-val="share">分享海报更好看</view>
           <view class="survey-opt {{surveyAnswers.q3 === 'social' ? 'on' : ''}}" bindtap="onSurveyPick" data-q="q3" data-val="social">更多社交互动</view>
-          <view class="survey-opt {{surveyAnswers.q3 === 'other' ? 'on' : ''}}" bindtap="onSurveyPick" data-q="q3" data-val="other">其他（会留言）</view>
         </view>
       </view>
 
@@ -252,12 +257,30 @@
         </view>
       </view>
 
+      <view class="survey-q">
+        <view class="survey-q-title">5. 自由留言（可选，50字以内）</view>
+        <input class="survey-input" placeholder="写下你想说的话..." maxlength="50" bindinput="onSurveyFeedback" value="{{surveyFeedback}}" />
+        <view class="survey-char-count">{{surveyFeedback.length}}/20</view>
+      </view>
+
       <view class="survey-submit" bindtap="submitSurvey">提交并领取奖励</view>
     </view>
   </view>
 
+  <view wx:if="{{dissolveInputVisible}}" class="dissolve-overlay" bindtap="closeDissolveInput">
+    <view class="dissolve-card" catchtap="preventBubble">
+      <view class="dissolve-title">写下你想对这张签说的话</view>
+      <view class="dissolve-sub">输入后这张签将合并消失，转化为正向能量</view>
+      <input class="dissolve-input" placeholder="例如：我已克服" bindinput="onDissolveInput" value="{{dissolveInput}}" />
+      <view class="dissolve-actions">
+        <view class="dissolve-btn" bindtap="closeDissolveInput">再想想</view>
+        <view class="dissolve-btn primary" bindtap="confirmDissolve">确认消除</view>
+      </view>
+    </view>
+  </view>
+
   <view wx:if="{{supportVisible}}" class="support-overlay" bindtap="closeSupport">
-    <view class="support-card" catchtap="">
+    <view class="support-card" catchtap="preventBubble">
       <view class="support-title">添一束好运火</view>
       <view class="support-sub">感谢这份签今天帮到了你，点亮一束火为好运加油。</view>
       <view class="support-amounts">
