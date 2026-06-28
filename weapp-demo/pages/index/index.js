@@ -18,7 +18,21 @@ const cards = [
   { id: 'cloud', grade: '平签', rarity: 'N', type: 'low', seal: '云', name: '云遮月', text: '今天有些事情看不清楚，先不急着下结论。', do: '等一等', avoid: '急着表态', action: '把一个待决定的事推迟到明天。', score: 54 },
   { id: 'bend', grade: '平签', rarity: 'N', type: 'low', seal: '弯', name: '绕路', text: '今天直线走不通的时候，弯一下也没关系。', do: '灵活', avoid: '硬碰硬', action: '换个时间或方式再试一次。', score: 48 },
   { id: 'stone', grade: '解签', rarity: 'NEG', type: 'negative', seal: '石', name: '绊脚石', text: '今天有个小障碍，跨过去比绕过去更快。', do: '直接面对', avoid: '假装没看见', action: '写下这个障碍，然后做最小的一步。', score: 28 },
-  { id: 'tangle', grade: '解签', rarity: 'NEG', type: 'negative', seal: '缠', name: '心乱如麻', text: '今天的混乱不是坏事，说明你在同时推进好几件事。', do: '列清单', avoid: '全放脑子里', action: '把所有待办写在一张纸上。', score: 25 }
+  { id: 'tangle', grade: '解签', rarity: 'NEG', type: 'negative', seal: '缠', name: '心乱如麻', text: '今天的混乱不是坏事，说明你在同时推进好几件事。', do: '列清单', avoid: '全放脑子里', action: '把所有待办写在一张纸上。', score: 25 },
+  { id: 'splendid', grade: '大吉签', rarity: 'SSR', type: 'good', seal: '锦', name: '锦绣前程', text: '今天适合做一件能留下痕迹的小事，它会慢慢变成大事。', do: '落笔', avoid: '空想', action: '写一条今天的工作或学习记录。', score: 96 },
+  { id: 'purple-qi', grade: '大吉签', rarity: 'SSR', type: 'good', seal: '紫', name: '紫气东来', text: '今天遇到的机会，比你以为的要多一个。', do: '多看一眼', avoid: '埋头', action: '打开一个你很久没点开的 app 或链接。', score: 94 },
+  { id: 'turn-luck', grade: '上上签', rarity: 'SR', type: 'good', seal: '转', name: '时来运转', text: '今天适合把一件卡住的事换一个入口再试一次。', do: '换入口', avoid: '死磕', action: '把卡住的事换一种问法或路径。', score: 83 },
+  { id: 'keep-simple', grade: '上签', rarity: 'R', type: 'normal', seal: '拙', name: '守拙', text: '今天不用做新东西，把已有的做好就足够了。', do: '打磨', avoid: '开新', action: '找出昨天做的一件事，优化一个小细节。', score: 74 },
+  { id: 'gather-momentum', grade: '上签', rarity: 'R', type: 'normal', seal: '势', name: '蓄势', text: '今天不是发力的时候，是准备的时候。', do: '准备', avoid: '冲刺', action: '列出明天要做的第一件事。', score: 72 },
+  { id: 'stick-old', grade: '平签', rarity: 'N', type: 'low', seal: '守', name: '守旧', text: '今天不适合改变计划，按原计划推进就好。', do: '坚持', avoid: '改动', action: '把今天原定计划中的第一件事完成。', score: 52 },
+  { id: 'wait-quiet', grade: '平签', rarity: 'N', type: 'low', seal: '静', name: '静待', text: '今天的结果不会立刻出现，耐心等一等。', do: '等待', avoid: '催促', action: '给一件正在推进的事设一个明天的提醒。', score: 50 },
+  { id: 'headwind', grade: '解签', rarity: 'NEG', type: 'negative', seal: '风', name: '逆风', text: '今天阻力比平时大，但这不是你的问题。', do: '借力', avoid: '硬撑', action: '找一个今天可以帮你分担的人。', score: 27 },
+  { id: 'hidden-reef', grade: '解签', rarity: 'NEG', type: 'negative', seal: '礁', name: '暗礁', text: '今天有个你看不见的障碍，慢一点没坏处。', do: '慢行', avoid: '冒进', action: '把今天最急的事推迟1小时再做。', score: 24 },
+  { id: 'lost-way', grade: '解签', rarity: 'NEG', type: 'negative', seal: '迷', name: '迷途', text: '今天感觉方向不清，先停下来确认一下。', do: '确认', avoid: '盲走', action: '写下一个你最想确认的问题。', score: 22 },
+  { id: 'peach-blossom', grade: '彩蛋签', rarity: 'SP', type: 'bonus', seal: '桃', name: '桃花', text: '今天适合主动联系一个你想念的人。', do: '开口', avoid: '等待', action: '发一条消息给一个你很久没联系的人。', score: 88 },
+  { id: 'golden-list', grade: '彩蛋签', rarity: 'SP', type: 'bonus', seal: '榜', name: '金榜', text: '今天适合把学到的知识用一句话讲出来。', do: '输出', avoid: '只输入', action: '用一句话总结今天学到的一个点。', score: 86 },
+  { id: 'return-home', grade: '彩蛋签', rarity: 'SP', type: 'bonus', seal: '归', name: '归家', text: '今天适合给家里打一个电话或做一件家务。', do: '顾家', avoid: '忽略', action: '给家里人发一条问候消息。', score: 82 },
+  { id: 'far-travel', grade: '彩蛋签', rarity: 'SP', type: 'bonus', seal: '远', name: '远行', text: '今天适合查看一个你从未去过的地方。', do: '探索', avoid: '守旧', action: '在地图上标记一个你想去的地方。', score: 80 }
 ]
 
 const mockDrift = [
@@ -67,7 +81,8 @@ Page({
     surveyAnswers: {},
     surveyFeedback: '',
     dissolveInputVisible: false,
-    dissolveInput: ''
+    dissolveInput: '',
+    dailyPool: []
   },
 
   onLoad() {
@@ -87,36 +102,38 @@ Page({
       todayScore: todayScore,
       todayDrawCount: todayDrawCount
     })
+    // 日轮换签池初始化
+    const poolDate = wx.getStorageSync('poolDate')
+    if (poolDate !== todayKey()) {
+      const dailyPool = this.generateDailyPool()
+      wx.setStorageSync('poolDate', todayKey())
+      wx.setStorageSync('dailyPool', dailyPool)
+      this.setData({ dailyPool })
+    } else {
+      this.setData({ dailyPool: wx.getStorageSync('dailyPool') || [] })
+    }
     this.renderAll()
+  },
+
+  generateDailyPool() {
+    const baseIndices = []
+    cards.forEach((c, i) => {
+      if (c.type !== 'bonus' && c.type !== 'negative') baseIndices.push(i)
+    })
+    return baseIndices.sort(() => Math.random() - 0.5).slice(0, 24)
   },
 
   pickCard() {
     const r = Math.random()
-    // 大吉签 4张 (20%)
-    if (r < .05) return cards[0]
-    if (r < .10) return cards[1]
-    if (r < .15) return cards[10]
-    if (r < .20) return cards[11]
-    // 上上签 5张 (20%)
-    if (r < .24) return cards[2]
-    if (r < .28) return cards[3]
-    if (r < .32) return cards[4]
-    if (r < .36) return cards[12]
-    if (r < .40) return cards[13]
-    // 上签 4张 (20%)
-    if (r < .45) return cards[5]
-    if (r < .50) return cards[6]
-    if (r < .55) return cards[14]
-    if (r < .60) return cards[15]
-    // 平签 4张 (20%)
-    if (r < .65) return cards[7]
-    if (r < .70) return cards[8]
-    if (r < .75) return cards[16]
-    if (r < .80) return cards[17]
-    // 解签 3张 (20%)
-    if (r < .87) return cards[9]
-    if (r < .94) return cards[18]
-    return cards[19]
+    // 彩蛋签 1.5%
+    if (r < .015) {
+      const bonusCards = cards.filter(c => c.type === 'bonus')
+      return bonusCards[Math.floor(Math.random() * bonusCards.length)]
+    }
+    // 基础签从当日签池抽取
+    const pool = this.data.dailyPool || []
+    if (pool.length === 0) return cards[0]
+    return cards[pool[Math.floor(Math.random() * pool.length)]]
   },
 
   luckPos(card) {
@@ -209,6 +226,7 @@ Page({
     this.setData({ collection })
     this.renderAll()
     wx.showToast({ title: '已收入牌册', icon: 'none' })
+    this.checkAchievements()
   },
 
   onTurn() {
@@ -248,12 +266,28 @@ Page({
     wx.showToast({ title: '比手气卡已送达好友榜', icon: 'none' })
   },
 
+  checkAchievements() {
+    const collection = this.data.collection || []
+    const gradeMap = { '大吉签': '大吉之人', '上上签': '福星高照', '上签': '稳步前行', '平签': '波澜不惊', '彩蛋签': '奇遇收藏家' }
+    for (const grade in gradeMap) {
+      const allIds = cards.filter(c => c.grade === grade).map(c => c.id)
+      if (allIds.length === 0) continue
+      const isComplete = allIds.every(id => collection.includes(id))
+      const key = 'achievement_' + grade
+      const already = wx.getStorageSync(key)
+      if (isComplete && !already) {
+        wx.setStorageSync(key, true)
+        wx.showToast({ title: '集齐' + grade + '！获得"' + gradeMap[grade] + '"称号', icon: 'none', duration: 2500 })
+      }
+    }
+  },
+
   renderAll() {
     const left = Math.max(0, 3 - this.data.freeUsed)
     const collection = this.data.collection || []
 
     // 构建牌册展示列表（按等级分类）
-    const gradeOrder = ['大吉签', '上上签', '上签', '平签']
+    const gradeOrder = ['大吉签', '上上签', '上签', '平签', '彩蛋签']
     const collected = cards.filter(c => c.type !== 'negative' && collection.includes(c.id))
     const uncollected = cards.filter(c => c.type !== 'negative' && !collection.includes(c.id))
     const albumDisplay = []
@@ -270,6 +304,7 @@ Page({
     const albumDajiCount = collected.filter(c => c.grade === '大吉签').length
     const albumSSCount = collected.filter(c => c.grade === '上上签').length
     const albumSCount = collected.filter(c => c.grade === '上签').length
+    const albumEggCount = collected.filter(c => c.grade === '彩蛋签').length
 
     // 漂流签
     const driftList = mockDrift
@@ -299,6 +334,7 @@ Page({
       albumDajiCount,
       albumSSCount,
       albumSCount,
+      albumEggCount,
       driftList,
       friends,
       myRank: myRank,
@@ -368,7 +404,8 @@ Page({
       current: {}, hasDrawn: false, axisLeft: 0, freeUsed: 0, collection: [],
       drawButtonText: '抽今日上上签', verifyShown: false,
       todayScore: 0, todayDrawCount: 0,
-      dissolveInputVisible: false, dissolveInput: ''
+      dissolveInputVisible: false, dissolveInput: '',
+      dailyPool: []
     })
     wx.setStorageSync('drawDate', todayKey())
     wx.setStorageSync('todayScore', 0)

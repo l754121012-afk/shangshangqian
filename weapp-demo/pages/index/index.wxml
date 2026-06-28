@@ -122,6 +122,15 @@
           </view>
           <view class="ac-bottom-deco"></view>
         </view>
+        <view wx:elif="{{item.grade === '彩蛋签'}}" class="album-card ac-egg">
+          <view class="album-card-inner">
+            <view class="ac-top"><view class="ac-grade">彩蛋签</view><view class="ac-seal">{{item.seal}}</view></view>
+            <view class="ac-body"><view class="ac-name">{{item.name}}</view><view class="ac-text">{{item.text}}</view></view>
+            <view class="ac-bottom"><view class="ac-action">{{item.action}}</view></view>
+          </view>
+          <view class="ac-bottom-deco"></view>
+          <view class="ac-egg-shine"></view>
+        </view>
       </block>
     </view>
     <view class="album-stats">
@@ -129,6 +138,7 @@
       <view class="album-stat"><b>{{albumDajiCount}}</b><span>大吉签</span></view>
       <view class="album-stat"><b>{{albumSSCount}}</b><span>上上签</span></view>
       <view class="album-stat"><b>{{albumSCount}}</b><span>上签</span></view>
+      <view class="album-stat egg"><b>{{albumEggCount}}</b><span>彩蛋签</span></view>
     </view>
   </view>
 
