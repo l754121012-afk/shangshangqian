@@ -124,12 +124,17 @@ Page({
   },
 
   onVerify() {
-    if (!this.data.current.id) return
-    if (this.data.current.type !== 'good') {
+    const card = this.data.current
+    if (!card || !card.id) {
+      wx.showToast({ title: '请先抽一张签', icon: 'none' })
+      return
+    }
+    if (card.type !== 'good') {
       wx.showToast({ title: '这类牌不出现感谢入口', icon: 'none' })
       return
     }
     this.setData({ verifyShown: true })
+    wx.showToast({ title: '验证入口已开启', icon: 'none' })
   },
 
   onSupport() {

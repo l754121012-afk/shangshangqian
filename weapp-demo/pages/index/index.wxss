@@ -143,7 +143,7 @@ page {
 
 .axis-labels {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   margin-top: 10rpx;
   color: rgba(230,189,130,.36);
   font-size: 22rpx;
@@ -330,11 +330,11 @@ page {
   animation: flicker .9s ease-in-out infinite alternate;
 }
 
-.flame:nth-child(1){left:50%;top:0}
-.flame:nth-child(2){right:20rpx;top:90rpx}
-.flame:nth-child(3){right:8rpx;top:240rpx}
-.flame:nth-child(4){left:20rpx;top:90rpx}
-.flame:nth-child(5){left:8rpx;top:240rpx}
+
+
+
+
+
 
 @keyframes flicker {
   from { transform: scale(.9); opacity: .7; }
@@ -664,7 +664,7 @@ page {
   z-index: 20;
   padding: 18rpx 24rpx 24rpx;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 16rpx;
   background: rgba(24,5,4,.90);
   border-top: 1rpx solid rgba(255,209,102,.24);
@@ -819,3 +819,12 @@ page {
 .drift-send-info b{color:#ffd166;display:block;font-size:26rpx;margin-bottom:4rpx}
 .drift-send-info text{color:#e6bd82;font-size:22rpx}
 .drift-send-btn{padding:14rpx 28rpx;border-radius:20rpx;border:none;background:linear-gradient(180deg,#ffe08a,#d99235);color:#3a0f08;font-size:22rpx;font-weight:700}
+
+/* 大吉签抽出时扫光+旋转光晕特效 */
+.card-sweep-wrap{position:absolute;inset:0;border-radius:48rpx;overflow:hidden;pointer-events:none;z-index:1}
+.card-sweep{position:absolute;top:0;left:-60%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,209,102,.18),rgba(255,240,180,.25),rgba(255,209,102,.18),transparent);animation:cardSweep 3.5s ease-in-out infinite}
+@keyframes cardSweep{0%{left:-60%}45%{left:100%}100%{left:100%}}
+.card-glow-orbit{position:absolute;top:50%;left:50%;width:220%;height:220%;transform:translate(-50%,-50%);pointer-events:none;z-index:0;animation:cardOrbit 6s linear infinite;border-radius:50%}
+.card-glow-orbit .cg1{position:absolute;top:0;left:50%;transform:translateX(-50%);width:40%;height:16%;background:radial-gradient(ellipse,rgba(255,209,102,.35),transparent 70%);filter:blur(16rpx)}
+.card-glow-orbit .cg2{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:30%;height:12%;background:radial-gradient(ellipse,rgba(255,180,60,.25),transparent 70%);filter:blur(12rpx)}
+@keyframes cardOrbit{to{transform:translate(-50%,-50%) rotate(360deg)}}
