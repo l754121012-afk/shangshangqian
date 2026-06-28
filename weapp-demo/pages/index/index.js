@@ -50,7 +50,11 @@ Page({
     shareReceived: false,
     todayScore: 0,
     todayDrawCount: 0,
-    supportVisible: false
+    supportVisible: false,
+    surveyVisible: false,
+    surveySubmitted: false,
+    surveyRewardClaimed: false,
+    surveyAnswers: {}
   },
 
   onLoad() {
@@ -276,6 +280,31 @@ Page({
     wx.showToast({ title: '已添加好友', icon: 'none' })
   },
   onSendDrift() { wx.showToast({ title: '已送出漂流签', icon: 'none' }) },
+
+  // 问卷
+  openSurvey() {
+    this.setData({ surveyVisible: true })
+  },
+  closeSurvey() {
+    this.setData({ surveyVisible: false })
+  },
+  onSurveyPick(e) {
+    const q = e.currentTarget.dataset.q
+    const val = e.currentTarget.dataset.val
+    this.setData({ ['surveyAnswers.' + q]: val })
+  },
+  submitSurvey() {
+    if (!this.data.surveyAnswers.q1 || !this.data.surveyAnswers.q2 || !this.data.surveyAnswers.q3) {
+      wx.showToast({ title: '请回答所有问题', icon: 'none' })
+      return
+    }
+    this.setData({ surveySubmitted: true, surveyVisible: false })
+    wx.showToast({ title: '感谢反馈！奖励1次抽签机会', icon: 'none', duration: 2500 })
+    const newFree = Math.max(0, this.data.freeUsed - 1)
+    this.setData({ freeUsed: newFree })
+    wx.setStorageSync('freeUsed', newFree)
+    this.renderAll()
+  }
 
   switchTab(e) { this.setData({ tab: e.currentTarget.dataset.tab }) },
 

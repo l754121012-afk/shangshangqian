@@ -196,9 +196,65 @@
       <view class="share-text">来比比你今天的手气。好友好运聚在一起，会生成一段群体鼓励。</view>
     </view>
     <button class="btn" bindtap="onCopy">复制分享文案</button>
+    <view class="survey-entry" bindtap="openSurvey">
+      <view class="survey-entry-icon">📋</view>
+      <view class="survey-entry-info"><b>填写反馈问卷</b><text>完成可获得1次免费抽签机会</text></view>
+      <view class="survey-entry-arrow">›</view>
+    </view>
     <button class="btn sub reset" bindtap="onReset">重置 Demo</button>
   </view>
 
+
+
+  <view wx:if="{{surveyVisible}}" class="survey-overlay" bindtap="closeSurvey">
+    <view class="survey-card" catchtap="">
+      <view class="survey-header">
+        <view class="survey-title">用户反馈问卷</view>
+        <view class="survey-sub">完成问卷可获得1次免费抽签机会</view>
+      </view>
+
+      <view class="survey-q">
+        <view class="survey-q-title">1. 你最喜欢哪个功能？</view>
+        <view class="survey-opts">
+          <view class="survey-opt {{surveyAnswers.q1 === 'draw' ? 'on' : ''}}" bindtap="onSurveyPick" data-q="q1" data-val="draw">每日抽签</view>
+          <view class="survey-opt {{surveyAnswers.q1 === 'album' ? 'on' : ''}}" bindtap="onSurveyPick" data-q="q1" data-val="album">牌册收集</view>
+          <view class="survey-opt {{surveyAnswers.q1 === 'drift' ? 'on' : ''}}" bindtap="onSurveyPick" data-q="q1" data-val="drift">漂流签社交</view>
+          <view class="survey-opt {{surveyAnswers.q1 === 'friend' ? 'on' : ''}}" bindtap="onSurveyPick" data-q="q1" data-val="friend">好友比手气</view>
+        </view>
+      </view>
+
+      <view class="survey-q">
+        <view class="survey-q-title">2. 你觉得签的建议对你有帮助吗？</view>
+        <view class="survey-opts">
+          <view class="survey-opt {{surveyAnswers.q2 === 'very' ? 'on' : ''}}" bindtap="onSurveyPick" data-q="q2" data-val="very">非常有帮助</view>
+          <view class="survey-opt {{surveyAnswers.q2 === 'somewhat' ? 'on' : ''}}" bindtap="onSurveyPick" data-q="q2" data-val="somewhat">有一点帮助</view>
+          <view class="survey-opt {{surveyAnswers.q2 === 'neutral' ? 'on' : ''}}" bindtap="onSurveyPick" data-q="q2" data-val="neutral">一般般</view>
+          <view class="survey-opt {{surveyAnswers.q2 === 'no' ? 'on' : ''}}" bindtap="onSurveyPick" data-q="q2" data-val="no">没什么帮助</view>
+        </view>
+      </view>
+
+      <view class="survey-q">
+        <view class="survey-q-title">3. 你希望增加什么功能？</view>
+        <view class="survey-opts">
+          <view class="survey-opt {{surveyAnswers.q3 === 'more' ? 'on' : ''}}" bindtap="onSurveyPick" data-q="q3" data-val="more">更多签卡内容</view>
+          <view class="survey-opt {{surveyAnswers.q3 === 'share' ? 'on' : ''}}" bindtap="onSurveyPick" data-q="q3" data-val="share">分享海报更好看</view>
+          <view class="survey-opt {{surveyAnswers.q3 === 'social' ? 'on' : ''}}" bindtap="onSurveyPick" data-q="q3" data-val="social">更多社交互动</view>
+          <view class="survey-opt {{surveyAnswers.q3 === 'other' ? 'on' : ''}}" bindtap="onSurveyPick" data-q="q3" data-val="other">其他（会留言）</view>
+        </view>
+      </view>
+
+      <view class="survey-q">
+        <view class="survey-q-title">4. 你会推荐给朋友吗？</view>
+        <view class="survey-opts">
+          <view class="survey-opt {{surveyAnswers.q4 === 'yes' ? 'on' : ''}}" bindtap="onSurveyPick" data-q="q4" data-val="yes">一定会</view>
+          <view class="survey-opt {{surveyAnswers.q4 === 'maybe' ? 'on' : ''}}" bindtap="onSurveyPick" data-q="q4" data-val="maybe">可能会</view>
+          <view class="survey-opt {{surveyAnswers.q4 === 'no' ? 'on' : ''}}" bindtap="onSurveyPick" data-q="q4" data-val="no">不会</view>
+        </view>
+      </view>
+
+      <view class="survey-submit" bindtap="submitSurvey">提交并领取奖励</view>
+    </view>
+  </view>
 
   <view wx:if="{{supportVisible}}" class="support-overlay" bindtap="closeSupport">
     <view class="support-card" catchtap="">
