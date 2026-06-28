@@ -134,7 +134,6 @@ Page({
       return
     }
     this.setData({ verifyShown: true })
-    wx.showToast({ title: '验证入口已开启', icon: 'none' })
   },
 
   onSupport() {

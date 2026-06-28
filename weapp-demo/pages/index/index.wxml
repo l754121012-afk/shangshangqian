@@ -10,7 +10,7 @@
     </view>
   </view>
 
-  <view wx:if="{{tab === 'draw'}}" class="page" style="padding-bottom:140rpx">
+  <view wx:if="{{tab === 'draw'}}" class="page" style="padding-bottom:80rpx">
     <view class="panel">
       <view class="title">摸一张<text>今日财运签</text></view>
       <view class="hint">微信小程序 Demo，验证抽卡、广告、牌册与漂流签。</view>
@@ -29,7 +29,7 @@
       <view class="quota">{{quotaText}}</view>
       <view class="deck {{current.grade === '大吉签' ? 'rare' : ''}}">
         <view class="aura"></view>
-        <view class="card {{cardClass}}">
+        <view class="card {{cardClass}} {{current.grade === '大吉签' ? 'card-daji' : ''}} {{current.grade === '上上签' ? 'card-shangshang' : ''}}">
           <view class="card-sweep-wrap" wx:if="{{current.grade === '大吉签'}}">
             <view class="card-sweep"></view>
             <view class="card-glow-orbit"><view class="cg1"></view><view class="cg2"></view></view>
@@ -69,7 +69,7 @@
     </view>
   </view>
 
-  <view wx:if="{{tab === 'album'}}" class="page" style="padding-bottom:140rpx">
+  <view wx:if="{{tab === 'album'}}" class="page" style="padding-bottom:80rpx">
     <view class="title">我的<text>好运牌册</text></view>
     <view class="hint">每种签各自样式统一，可多张并存。大吉签含专属动效。</view>
     <view class="album-v2">
@@ -126,7 +126,7 @@
     </view>
   </view>
 
-  <view wx:if="{{tab === 'drift'}}" class="page" style="position:relative;padding-bottom:140rpx">
+  <view wx:if="{{tab === 'drift'}}" class="page" style="position:relative;padding-bottom:80rpx">
     <view class="title">漂流<text>好运签</text></view>
     <view class="hint">把签匿名或实名送给陌生人或好友，附上一句话。</view>
     <view class="drift-tabs">
@@ -167,7 +167,7 @@
     </view>
   </view>
 
-  <view wx:if="{{tab === 'friends'}}" class="page" style="padding-bottom:140rpx">
+  <view wx:if="{{tab === 'friends'}}" class="page" style="padding-bottom:80rpx">
     <view class="title">好友<text>比手气</text></view>
     <view class="hint">比较今日手气和卡牌稀有度，不做羞辱性排名。</view>
     <view class="friend-list">
@@ -188,7 +188,7 @@
     </view>
   </view>
 
-  <view wx:if="{{tab === 'me'}}" class="page" style="padding-bottom:140rpx">
+  <view wx:if="{{tab === 'me'}}" class="page" style="padding-bottom:80rpx">
     <view class="title">今日<text>分享卡</text></view>
     <view class="share-card">
       <view class="share-k">JRSSQ · SHARE CARD</view>
