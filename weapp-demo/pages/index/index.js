@@ -202,12 +202,8 @@ Page({
   },
 
   onShareCard() {
-    this.setData({ shareFlying: true })
-    setTimeout(() => {
-      this.setData({ shareFlying: false, shareReceived: true })
-      this.setData({ tab: 'friends' })
-      wx.showToast({ title: '比手气卡已送达好友榜', icon: 'none' })
-    }, 1200)
+    this.setData({ shareReceived: true, tab: 'friends' })
+    wx.showToast({ title: '比手气卡已送达好友榜', icon: 'none' })
   },
 
   renderAll() {
