@@ -8,6 +8,7 @@
       <text class="streak-num">{{streak}}</text>
       <text class="streak-label">连续天</text>
     </view>
+    <view wx:if="{{myTitle}}" class="my-title-badge">{{myTitle}}</view>
   </view>
 
   <view wx:if="{{tab === 'draw'}}" class="page" style="padding-bottom:80rpx">
@@ -122,14 +123,49 @@
           </view>
           <view class="ac-bottom-deco"></view>
         </view>
-        <view wx:elif="{{item.grade === '彩蛋签'}}" class="album-card ac-egg">
+        <view wx:elif="{{item.grade === '彩蛋签'}}" class="album-card ac-egg ac-egg-{{item.theme}}">
+          <view class="egg-deco">
+            <block wx:if="{{item.theme === 'peach'}}">
+              <view class="egg-glow"></view>
+              <view class="egg-crown"></view>
+              <view class="egg-crown2"></view>
+              <view class="egg-stem"></view>
+              <view class="egg-petal"></view>
+              <view class="egg-petal"></view>
+              <view class="egg-petal"></view>
+            </block>
+            <block wx:elif="{{item.theme === 'golden'}}">
+              <view class="egg-glow"></view>
+              <view class="egg-cap t"></view>
+              <view class="egg-body"></view>
+              <view class="egg-lines"><view></view><view></view><view></view></view>
+              <view class="egg-cap b"></view>
+              <view class="egg-seal-stamp"></view>
+            </block>
+            <block wx:elif="{{item.theme === 'home'}}">
+              <view class="egg-moon"></view>
+              <view class="egg-roof"></view>
+              <view class="egg-puff"></view>
+              <view class="egg-puff"></view>
+              <view class="egg-wall"></view>
+              <view class="egg-arch"></view>
+              <view class="egg-lit-win"></view>
+            </block>
+            <block wx:elif="{{item.theme === 'travel'}}">
+              <view class="egg-haze"></view>
+              <view class="egg-bg-mt"></view>
+              <view class="egg-fg-mt"></view>
+              <view class="egg-peak"></view>
+              <view class="egg-flag-stick"></view>
+              <view class="egg-flag-cloth"></view>
+            </block>
+          </view>
           <view class="album-card-inner">
             <view class="ac-top"><view class="ac-grade">彩蛋签</view><view class="ac-seal">{{item.seal}}</view></view>
             <view class="ac-body"><view class="ac-name">{{item.name}}</view><view class="ac-text">{{item.text}}</view></view>
             <view class="ac-bottom"><view class="ac-action">{{item.action}}</view></view>
           </view>
           <view class="ac-bottom-deco"></view>
-          <view class="ac-egg-shine"></view>
         </view>
       </block>
     </view>
@@ -191,7 +227,7 @@
         <view class="rank">{{index + 1}}</view>
         <view class="avatar"></view>
         <view class="friend-meta">
-          <view>{{item.name}}{{item.isMe ? '（我）' : ''}}</view>
+          <view>{{item.name}}{{item.isMe ? '（我）' : ''}}<text wx:if="{{item.title}}" class="friend-title"> · {{item.title}}</text></view>
           <text>{{item.grade}} · {{item.card}} · 好运值 {{item.score}}</text>
         </view>
       </view>
@@ -206,6 +242,15 @@
 
   <view wx:if="{{tab === 'me'}}" class="page" style="padding-bottom:80rpx">
     <view class="title">今日<text>分享卡</text></view>
+    <view class="my-titles-section">
+      <view class="my-titles-title">我的称号</view>
+      <view class="my-titles-list">
+        <view wx:if="{{myTitles.length === 0}}" class="my-titles-empty">集齐同一等级全部签卡即可获得称号</view>
+        <block wx:for="{{myTitles}}" wx:key="*this">
+          <view class="my-title-tag">{{item}}</view>
+        </block>
+      </view>
+    </view>
     <view class="share-card">
       <view class="share-k">JRSSQ · SHARE CARD</view>
       <view class="share-title">我抽到「{{current.name || '今日上上签'}}」</view>
