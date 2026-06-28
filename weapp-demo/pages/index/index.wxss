@@ -1030,41 +1030,9 @@ page {
 
 /* 桃花签 - 大面积桃花枝底纹 */
 .ac-egg-peach .egg-deco{position:absolute;inset:0;z-index:0;pointer-events:none}
-.ac-egg-peach .egg-branch-main{position:absolute;bottom:-20rpx;right:-10rpx;width:400rpx;height:6rpx;background:rgba(255,255,255,.30);transform:rotate(-35deg);border-radius:4rpx}
-.ac-egg-peach .egg-branch-1{position:absolute;bottom:120rpx;right:40rpx;width:160rpx;height:4rpx;background:rgba(255,255,255,.30);transform:rotate(-65deg);border-radius:4rpx;transform-origin:right center}
-.ac-egg-peach .egg-branch-2{position:absolute;bottom:240rpx;right:120rpx;width:140rpx;height:4rpx;background:rgba(255,255,255,.26);transform:rotate(-50deg);border-radius:4rpx;transform-origin:right center}
-.ac-egg-peach .egg-flower1{position:absolute;bottom:80rpx;right:20rpx;width:120rpx;height:120rpx}
-.ac-egg-peach .egg-flower1 .egg-fp{position:absolute;width:44rpx;height:28rpx;border:4rpx solid rgba(255,255,255,.30);border-radius:50%}
-.ac-egg-peach .egg-flower1 .egg-fp:nth-child(1){bottom:0;left:50%;transform:translateX(-50%) rotate(0deg)}
-.ac-egg-peach .egg-flower1 .egg-fp:nth-child(2){bottom:10rpx;left:50%;transform:translateX(-50%) rotate(72deg);transform-origin:center 68rpx}
-.ac-egg-peach .egg-flower1 .egg-fp:nth-child(3){bottom:10rpx;left:50%;transform:translateX(-50%) rotate(144deg);transform-origin:center 68rpx}
-.ac-egg-peach .egg-flower1 .egg-fp:nth-child(4){bottom:10rpx;left:50%;transform:translateX(-50%) rotate(216deg);transform-origin:center 68rpx}
-.ac-egg-peach .egg-flower1 .egg-fp:nth-child(5){bottom:10rpx;left:50%;transform:translateX(-50%) rotate(288deg);transform-origin:center 68rpx}
-.ac-egg-peach .egg-flower1 .egg-fc{position:absolute;bottom:24rpx;left:50%;transform:translateX(-50%);width:20rpx;height:20rpx;border:3rpx solid rgba(255,255,255,.30);border-radius:50%}
-.ac-egg-peach .egg-flower2{position:absolute;bottom:200rpx;right:80rpx;width:80rpx;height:80rpx}
-.ac-egg-peach .egg-flower2 .egg-fp{position:absolute;width:32rpx;height:20rpx;border:3rpx solid rgba(255,255,255,.30);border-radius:50%}
-.ac-egg-peach .egg-flower2 .egg-fp:nth-child(1){bottom:0;left:50%;transform:translateX(-50%) rotate(0deg)}
-.ac-egg-peach .egg-flower2 .egg-fp:nth-child(2){bottom:8rpx;left:50%;transform:translateX(-50%) rotate(72deg);transform-origin:center 44rpx}
-.ac-egg-peach .egg-flower2 .egg-fp:nth-child(3){bottom:8rpx;left:50%;transform:translateX(-50%) rotate(144deg);transform-origin:center 44rpx}
-.ac-egg-peach .egg-flower2 .egg-fp:nth-child(4){bottom:8rpx;left:50%;transform:translateX(-50%) rotate(216deg);transform-origin:center 44rpx}
-.ac-egg-peach .egg-flower2 .egg-fp:nth-child(5){bottom:8rpx;left:50%;transform:translateX(-50%) rotate(288deg);transform-origin:center 44rpx}
-.ac-egg-peach .egg-bud{position:absolute;bottom:300rpx;right:140rpx;width:40rpx;height:56rpx;border:3rpx solid rgba(255,255,255,.30);border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;transform:rotate(-20deg)}
-.ac-egg-peach .egg-fall1{position:absolute;bottom:360rpx;right:200rpx;width:28rpx;height:18rpx;border:3rpx solid rgba(255,255,255,.30);border-radius:50%;transform:rotate(45deg)}
-.ac-egg-peach .egg-fall2{position:absolute;bottom:140rpx;left:60rpx;width:24rpx;height:16rpx;border:3rpx solid rgba(255,255,255,.30);border-radius:50%;transform:rotate(-30deg)}
 
 /* 金榜签 - 大面积卷轴/竹简底纹 */
 .ac-egg-golden .egg-deco{position:absolute;inset:0;z-index:0;pointer-events:none}
-.ac-egg-golden .egg-scroll{position:absolute;bottom:20rpx;right:20rpx;width:220rpx;height:320rpx;border:4rpx solid rgba(255,255,255,.30);border-radius:12rpx}
-.ac-egg-golden .egg-scroll-top{position:absolute;top:-12rpx;left:-8rpx;right:-8rpx;height:24rpx;border:4rpx solid rgba(255,255,255,.30);border-radius:12rpx}
-.ac-egg-golden .egg-scroll-bot{position:absolute;bottom:-12rpx;left:-8rpx;right:-8rpx;height:24rpx;border:4rpx solid rgba(255,255,255,.30);border-radius:12rpx}
-.ac-egg-golden .egg-scroll-lines{position:absolute;top:40rpx;left:30rpx;right:30rpx;display:flex;flex-direction:column;gap:28rpx}
-.ac-egg-golden .egg-scroll-lines view{height:4rpx;background:rgba(255,255,255,.30);border-radius:2rpx}
-.ac-egg-golden .egg-scroll-lines view:nth-child(1){width:100%}
-.ac-egg-golden .egg-scroll-lines view:nth-child(2){width:85%}
-.ac-egg-golden .egg-scroll-lines view:nth-child(3){width:92%}
-.ac-egg-golden .egg-scroll-lines view:nth-child(4){width:70%}
-.ac-egg-golden .egg-scroll-lines view:nth-child(5){width:88%}
-.ac-egg-golden .egg-scroll-lines view:nth-child(6){width:60%}
 .ac-egg-golden .egg-stamp{position:absolute;bottom:340rpx;right:72rpx;width:72rpx;height:72rpx;border:4rpx solid rgba(255,255,255,.30);transform:rotate(8deg);border-radius:8rpx}
 .ac-egg-golden .egg-stamp::before{content:"";position:absolute;inset:8rpx;border:2rpx solid rgba(255,255,255,.30);border-radius:4rpx}
 
@@ -1076,13 +1044,6 @@ page {
 .ac-egg-travel .egg-mt-near{position:absolute;bottom:20rpx;right:120rpx;width:0;height:0;border-left:100rpx solid transparent;border-right:100rpx solid transparent;border-bottom:110rpx solid rgba(255,255,255,.30)}
 .ac-egg-travel .egg-snow1{position:absolute;bottom:112rpx;right:36rpx;width:40rpx;height:4rpx;background:rgba(255,255,255,.30);transform:rotate(-15deg);border-radius:2rpx}
 .ac-egg-travel .egg-snow2{position:absolute;bottom:132rpx;right:124rpx;width:28rpx;height:4rpx;background:rgba(255,255,255,.26);transform:rotate(-20deg);border-radius:2rpx}
-.ac-egg-travel .egg-compass-big{position:absolute;bottom:280rpx;right:100rpx;width:88rpx;height:88rpx;border:4rpx solid rgba(255,255,255,.30);border-radius:50%}
-.ac-egg-travel .egg-compass-big::before{content:"";position:absolute;top:50%;left:50%;width:4rpx;height:44rpx;background:rgba(255,255,255,.30);transform:translate(-50%,-50%)}
-.ac-egg-travel .egg-compass-big::after{content:"";position:absolute;top:50%;left:50%;width:44rpx;height:4rpx;background:rgba(255,255,255,.30);transform:translate(-50%,-50%)}
-.ac-egg-travel .egg-cn{position:absolute;top:8rpx;left:50%;transform:translateX(-50%);font-size:14rpx;color:rgba(255,255,255,.30);font-weight:700}
-.ac-egg-travel .egg-star1{position:absolute;top:120rpx;right:40rpx;width:12rpx;height:12rpx;border:3rpx solid rgba(255,255,255,.30);transform:rotate(45deg)}
-.ac-egg-travel .egg-star2{position:absolute;top:160rpx;left:60rpx;width:10rpx;height:10rpx;border:3rpx solid rgba(255,255,255,.30);transform:rotate(45deg)}
-.ac-egg-travel .egg-star3{position:absolute;top:200rpx;right:160rpx;width:8rpx;height:8rpx;border:3rpx solid rgba(255,255,255,.26);transform:rotate(45deg)}
 
 /* ===== 抽签页彩蛋签样式 ===== */
 .card-egg{position:relative;border-radius:16rpx}
@@ -1128,21 +1089,10 @@ page {
   72%{top:calc(100% - 4rpx);left:-10%;width:10%;height:4rpx}
   73%{top:110%;left:0;width:4rpx;height:10%}
   100%{top:-10%;left:0;width:4rpx;height:10%}
-}100%{transform:rotate(360deg)}}
-
-/* 冷色调签抽签页适配：seal和grade用浅色保证可读 */
-.draw-egg-home .seal{background:rgba(13,71,161,.7);color:#bbdefb!important;box-shadow:0 2rpx 6rpx rgba(0,0,0,.2)}
-.draw-egg-home .seal text{color:#bbdefb!important}
-.draw-egg-home .rarity{color:#bbdefb!important}
-.draw-egg-travel .seal{background:rgba(0,105,92,.7);color:#b2dfdb!important;box-shadow:0 2rpx 6rpx rgba(0,0,0,.2)}
-.draw-egg-travel .seal text{color:#b2dfdb!important}
-.draw-egg-travel .rarity{color:#b2dfdb!important}
+}
 
 /* 冷色调签抽签页适配：游戏卡面蓝金/青金配色 */
 /* 归家签 - 深蓝底+暖金光晕+暗金seal+银白过渡 */
-.draw-egg-peach .rarity,.draw-egg-golden .rarity{color:#fff8e1}
-.draw-egg-home .rarity{color:#e3f2fd}
-.draw-egg-travel .rarity{color:#e0f2f1}
 .draw-egg-home{background:radial-gradient(circle at 80% 20%,rgba(234,195,89,.18) 0%,transparent 40%),radial-gradient(circle at 50% 0%,#90caf9,#1565c0 35%,#0d47a1 70%)!important}
 .draw-egg-home .seal{background:linear-gradient(135deg,#b8860b,#d4af37);color:#fffde7!important;box-shadow:0 2rpx 8rpx rgba(0,0,0,.25),inset 0 1rpx 2rpx rgba(255,255,255,.2)}
 .draw-egg-home .seal text{color:#fffde7!important}
