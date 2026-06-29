@@ -1,0 +1,160 @@
+{
+  "version": "v1",
+  "description": "分享卡片模板库，用户抽卡后选择模板生成分享图。",
+  "dataFormat": {
+    "id": "模板唯一标识",
+    "name": "模板名称（用户可见）",
+    "category": "分类标签",
+    "style": {
+      "bgType": "背景类型：gradient=渐变 solid=纯色 image=图片",
+      "bgValue": "背景值",
+      "textColor": "主文字颜色",
+      "accentColor": "强调色",
+      "font": "字体风格：serif=衬线 sans=无衬线"
+    },
+    "layout": "布局方式：center=居中 split=左右分栏",
+    "elements": "包含的元素列表"
+  },
+  "templates": [
+    {
+      "id": "classic",
+      "name": "经典签文",
+      "category": "通用",
+      "style": {
+        "bgType": "gradient",
+        "bgValue": "linear-gradient(160deg, #fff0c4, #f0b34d)",
+        "textColor": "#48160c",
+        "accentColor": "#c51f1a",
+        "font": "serif"
+      },
+      "layout": "center",
+      "elements": [
+        "grade",
+        "seal",
+        "name",
+        "text",
+        "do",
+        "avoid",
+        "action",
+        "qr"
+      ]
+    },
+    {
+      "id": "minimal",
+      "name": "极简文字",
+      "category": "通用",
+      "style": {
+        "bgType": "solid",
+        "bgValue": "#1a0a05",
+        "textColor": "#ffd166",
+        "accentColor": "#e6bd82",
+        "font": "sans"
+      },
+      "layout": "center",
+      "elements": [
+        "name",
+        "text",
+        "action",
+        "qr"
+      ]
+    },
+    {
+      "id": "ink-wash",
+      "name": "国风墨色",
+      "category": "国风",
+      "style": {
+        "bgType": "image",
+        "bgValue": "ink-wash-bg.png",
+        "textColor": "#2c1810",
+        "accentColor": "#8b0000",
+        "font": "serif"
+      },
+      "layout": "split",
+      "elements": [
+        "grade",
+        "seal",
+        "name",
+        "text",
+        "qr"
+      ]
+    },
+    {
+      "id": "office",
+      "name": "职场加油",
+      "category": "职场",
+      "style": {
+        "bgType": "gradient",
+        "bgValue": "linear-gradient(160deg, #2c3e50, #1a252f)",
+        "textColor": "#ecf0f1",
+        "accentColor": "#ffd700",
+        "font": "sans"
+      },
+      "layout": "center",
+      "elements": [
+        "name",
+        "text",
+        "do",
+        "avoid",
+        "qr"
+      ]
+    },
+    {
+      "id": "weekend",
+      "name": "周末治愈",
+      "category": "周末",
+      "style": {
+        "bgType": "gradient",
+        "bgValue": "linear-gradient(160deg, #a8e6cf, #88d8b0)",
+        "textColor": "#1a3c34",
+        "accentColor": "#ff6b6b",
+        "font": "serif"
+      },
+      "layout": "center",
+      "elements": [
+        "name",
+        "text",
+        "action",
+        "qr"
+      ]
+    },
+    {
+      "id": "mood",
+      "name": "情绪日记",
+      "category": "情绪",
+      "style": {
+        "bgType": "gradient",
+        "bgValue": "linear-gradient(160deg, #667eea, #764ba2)",
+        "textColor": "#ffffff",
+        "accentColor": "#ffd700",
+        "font": "sans"
+      },
+      "layout": "split",
+      "elements": [
+        "name",
+        "text",
+        "action",
+        "qr"
+      ]
+    },
+    {
+      "id": "luck",
+      "name": "好运爆棚",
+      "category": "通用",
+      "style": {
+        "bgType": "gradient",
+        "bgValue": "linear-gradient(160deg, #f093fb, #f5576c)",
+        "textColor": "#ffffff",
+        "accentColor": "#ffd700",
+        "font": "serif"
+      },
+      "layout": "center",
+      "elements": [
+        "grade",
+        "seal",
+        "name",
+        "text",
+        "qr"
+      ]
+    }
+  ]
+}

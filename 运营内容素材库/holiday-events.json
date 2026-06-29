@@ -1,0 +1,159 @@
+{
+  "version": "2026",
+  "description": "节日专题活动配置，特定日期自动切换主题签卡和视觉。",
+  "dataFormat": {
+    "id": "活动唯一标识",
+    "name": "节日名称",
+    "date": "触发日期（MM-DD，每年重复）",
+    "duration": "持续天数",
+    "theme": {
+      "bgColor": "主题背景色",
+      "accentColor": "强调色",
+      "specialCards": "节日专属签卡列表"
+    },
+    "shareTemplate": "使用的分享模板id"
+  },
+  "events": [
+    {
+      "id": "mid-autumn-2026",
+      "name": "中秋",
+      "date": "09-25",
+      "duration": 3,
+      "theme": {
+        "bgColor": "#1a0a2e",
+        "accentColor": "#ffd700",
+        "specialCards": [
+          {
+            "name": "月圆",
+            "text": "今天适合给在意的人发一句问候。",
+            "do": "表达心意",
+            "avoid": "沉默",
+            "action": "发一条消息给一个你想念的人。"
+          },
+          {
+            "name": "团圆",
+            "text": "不管多远，心意到了就是团圆。",
+            "do": "视频通话",
+            "avoid": "独自度过",
+            "action": "给家人打一个5分钟的电话。"
+          }
+        ]
+      },
+      "shareTemplate": "classic"
+    },
+    {
+      "id": "national-day-2026",
+      "name": "国庆",
+      "date": "10-01",
+      "duration": 7,
+      "theme": {
+        "bgColor": "#8b0000",
+        "accentColor": "#ffd700",
+        "specialCards": [
+          {
+            "name": "启程",
+            "text": "假期第一天，先放下手机，看看窗外。",
+            "do": "放松",
+            "avoid": "排满行程",
+            "action": "给自己留30分钟什么都不做。"
+          },
+          {
+            "name": "归途",
+            "text": "回家的路上，风景比平时好看。",
+            "do": "观察",
+            "avoid": "赶路",
+            "action": "拍一张路上的照片。"
+          }
+        ]
+      },
+      "shareTemplate": "classic"
+    },
+    {
+      "id": "new-year-2027",
+      "name": "元旦",
+      "date": "01-01",
+      "duration": 3,
+      "theme": {
+        "bgColor": "#0a1628",
+        "accentColor": "#ffd700",
+        "specialCards": [
+          {
+            "name": "新始",
+            "text": "新的一年，先允许自己慢慢来。",
+            "do": "定小目标",
+            "avoid": "立大flag",
+            "action": "写下这个月要完成的一件小事。"
+          },
+          {
+            "name": "展望",
+            "text": "未来不是等来的，是一步一步走出来的。",
+            "do": "规划",
+            "avoid": "空想",
+            "action": "给三个月后的自己写一句话。"
+          }
+        ]
+      },
+      "shareTemplate": "minimal"
+    },
+    {
+      "id": "valentine-2027",
+      "name": "情人节",
+      "date": "02-14",
+      "duration": 1,
+      "theme": {
+        "bgColor": "#2e0a1a",
+        "accentColor": "#ff6b9d",
+        "specialCards": [
+          {
+            "name": "心动",
+            "text": "喜欢一个人的时候，今天就是最好的日子。",
+            "do": "勇敢表达",
+            "avoid": "犹豫",
+            "action": "对在意的人说一声'今天很开心'。"
+          }
+        ]
+      },
+      "shareTemplate": "luck"
+    },
+    {
+      "id": "labor-day-2027",
+      "name": "劳动节",
+      "date": "05-01",
+      "duration": 3,
+      "theme": {
+        "bgColor": "#1a252f",
+        "accentColor": "#ffd700",
+        "specialCards": [
+          {
+            "name": "耕耘",
+            "text": "每一份努力，时间都会记得。",
+            "do": "复盘",
+            "avoid": "透支",
+            "action": "写下今年最骄傲的一件小事。"
+          }
+        ]
+      },
+      "shareTemplate": "office"
+    },
+    {
+      "id": "dragon-boat-2027",
+      "name": "端午",
+      "date": "06-09",
+      "duration": 3,
+      "theme": {
+        "bgColor": "#0a2e1a",
+        "accentColor": "#ffd700",
+        "specialCards": [
+          {
+            "name": "安康",
+            "text": "今天吃一个粽子，告诉自己：辛苦了。",
+            "do": "犒劳自己",
+            "avoid": "忙碌",
+            "action": "吃一个喜欢的东西，慢慢吃。"
+          }
+        ]
+      },
+      "shareTemplate": "classic"
+    }
+  ]
+}
