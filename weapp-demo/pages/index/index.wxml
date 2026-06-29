@@ -261,7 +261,7 @@
       <view class="my-titles-list">
         <view wx:if="{{myTitles.length === 0}}" class="my-titles-empty">集齐同一等级全部签卡即可获得称号</view>
         <block wx:for="{{myTitles}}" wx:key="*this">
-          <view class="my-title-tag {{item === preferredTitle ? 'active' : ''}} {{item === '奇遇收藏家' ? 'rainbow' : ''}}" bindtap="selectPreferredTitle" data-title="{{item}}">
+          <view class="my-title-tag {{item === preferredTitle ? 'active' : ''}} {{item === '奇遇收藏家' ? 'rainbow' : ''}} {{item === '大吉之人' ? 'daji' : ''}}" bindtap="selectPreferredTitle" data-title="{{item}}">
             <text wx:if="{{item === preferredTitle}}" class="title-crown">👑</text>{{item}}
           </view>
         </block>

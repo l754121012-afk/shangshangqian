@@ -969,13 +969,15 @@ page {
 .my-title-tag.active{background:linear-gradient(135deg,#ffec8b,#ffb347);color:#3a0f08;box-shadow:0 0 16rpx rgba(255,215,0,.5),inset 0 0 0 2rpx rgba(255,255,255,.4);transform:scale(1.06)}
 .my-titles-hint{font-size:20rpx;color:rgba(230,189,130,.5);font-weight:400;margin-left:8rpx}
 .title-crown{font-size:18rpx;margin-right:4rpx}
-.my-title-tag.rainbow{background:linear-gradient(90deg,#ff6b9d,#ffa751,#ffd700,#56c7f7,#c084fc,#ff6b9d);background-size:200% 100%;color:#fff;text-shadow:0 1rpx 4rpx rgba(0,0,0,.3);box-shadow:0 0 14rpx rgba(255,107,157,.35),0 0 8rpx rgba(86,199,247,.25);animation:rainbowShift 3s linear infinite}
-.my-title-tag.rainbow.active{box-shadow:0 0 20rpx rgba(255,107,157,.5),0 0 12rpx rgba(86,199,247,.35),inset 0 0 0 2rpx rgba(255,255,255,.3);transform:scale(1.06)}
+.my-title-tag.rainbow{background:linear-gradient(90deg,#ff6b9d,#ffa751,#ffd700,#56c7f7,#c084fc,#ff6b9d);background-size:200% 100%;color:#fff;text-shadow:0 1rpx 4rpx rgba(0,0,0,.3);box-shadow:0 0 10rpx rgba(255,107,157,.2),0 0 5rpx rgba(86,199,247,.14);animation:rainbowShift 3s linear infinite}
+.my-title-tag.rainbow.active{box-shadow:0 0 12rpx rgba(255,107,157,.3),0 0 7rpx rgba(86,199,247,.2),inset 0 0 0 2rpx rgba(255,255,255,.3);transform:scale(1.06)}
+.my-title-tag.daji{background:linear-gradient(135deg,#c51f1a,#ffd700);background-size:200% 200%;color:#fff;text-shadow:0 1rpx 4rpx rgba(0,0,0,.3);box-shadow:0 0 14rpx rgba(197,31,26,.4),0 0 8rpx rgba(255,215,0,.3);animation:dajiGlow 2.5s ease-in-out infinite}
+.my-title-tag.daji.active{box-shadow:0 0 20rpx rgba(197,31,26,.55),0 0 12rpx rgba(255,215,0,.4),inset 0 0 0 2rpx rgba(255,255,255,.3);transform:scale(1.06)}
 @keyframes rainbowShift{0%{background-position:0% 50%}100%{background-position:200% 50%}}
 .friend-title{color:#ffd166;font-size:20rpx;font-weight:700;margin-left:8rpx}
 /* 奇遇收藏家 - 全局彩虹 */
-.my-title-badge.rainbow{background:linear-gradient(90deg,#ff6b9d,#ffa751,#ffd700,#56c7f7,#c084fc,#ff6b9d);background-size:200% 100%;color:#fff;text-shadow:0 1rpx 4rpx rgba(0,0,0,.3);box-shadow:0 0 14rpx rgba(255,107,157,.35),0 0 8rpx rgba(86,199,247,.25);animation:rainbowShift 3s linear infinite}
-.friend-title.rainbow{background:linear-gradient(90deg,#ff6b9d,#ffa751,#ffd700,#56c7f7,#c084fc,#ff6b9d);background-size:200% 100%;color:#fff;text-shadow:0 1rpx 4rpx rgba(0,0,0,.3);box-shadow:0 0 14rpx rgba(255,107,157,.35),0 0 8rpx rgba(86,199,247,.25);animation:rainbowShift 3s linear infinite;padding:2rpx 10rpx;border-radius:10rpx;font-size:18rpx}
+.my-title-badge.rainbow{background:linear-gradient(90deg,#ff6b9d,#ffa751,#ffd700,#56c7f7,#c084fc,#ff6b9d);background-size:200% 100%;color:#fff;text-shadow:0 1rpx 4rpx rgba(0,0,0,.3);box-shadow:0 0 10rpx rgba(255,107,157,.2),0 0 5rpx rgba(86,199,247,.14);animation:rainbowShift 3s linear infinite}
+.friend-title.rainbow{background:linear-gradient(90deg,#ff6b9d,#ffa751,#ffd700,#56c7f7,#c084fc,#ff6b9d);background-size:200% 100%;color:#fff;text-shadow:0 1rpx 4rpx rgba(0,0,0,.3);box-shadow:0 0 10rpx rgba(255,107,157,.2),0 0 5rpx rgba(86,199,247,.14);animation:rainbowShift 3s linear infinite;padding:2rpx 10rpx;border-radius:10rpx;font-size:18rpx}
 /* 大吉之人 - 全局金红 */
 .my-title-badge.daji{background:linear-gradient(135deg,#c51f1a,#ffd700);background-size:200% 200%;color:#fff;text-shadow:0 1rpx 4rpx rgba(0,0,0,.3);box-shadow:0 0 14rpx rgba(197,31,26,.4),0 0 8rpx rgba(255,215,0,.3);animation:dajiGlow 2.5s ease-in-out infinite}
 .friend-title.daji{background:linear-gradient(135deg,#c51f1a,#ffd700);background-size:200% 200%;color:#fff;text-shadow:0 1rpx 4rpx rgba(0,0,0,.3);box-shadow:0 0 14rpx rgba(197,31,26,.4),0 0 8rpx rgba(255,215,0,.3);animation:dajiGlow 2.5s ease-in-out infinite;padding:2rpx 10rpx;border-radius:10rpx;font-size:18rpx}
