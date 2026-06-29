@@ -318,6 +318,7 @@ Page({
     this.setData({ preferredTitle: title, myTitle: title })
     wx.setStorageSync('preferredTitle', title)
     wx.showToast({ title: '已设置"' + title + '"为优先展示', icon: 'none' })
+    this.renderAll()
   },
 
   renderAll() {

@@ -241,7 +241,7 @@
         <view class="rank">{{index + 1}}</view>
         <view class="avatar"></view>
         <view class="friend-meta">
-          <view>{{item.name}}{{item.isMe ? '（我）' : ''}}<text wx:if="{{item.title}}" class="friend-title {{item.title === '奇遇收藏家' ? 'rainbow' : ''}} {{item.title === '大吉之人' ? 'daji' : ''}}"> · {{item.title}}</text></view>
+          <view>{{item.name}}{{item.isMe ? '（我）' : ''}}<view wx:if="{{item.title}}" class="friend-title-wrap {{item.isMe && item.title === '大吉之人' ? 'has-sparkle' : ''}}"><text class="friend-title {{item.title === '奇遇收藏家' ? 'rainbow' : ''}} {{item.title === '大吉之人' ? 'daji' : ''}}"> · {{item.title}}</text><view wx:if="{{item.isMe && item.title === '大吉之人'}}" class="sparkle"><view class="spk spk1"></view><view class="spk spk2"></view><view class="spk spk3"></view><view class="spk spk4"></view></view></view></view>
           <text>{{item.grade}} · {{item.card}} · 好运值 {{item.score}}</text>
         </view>
       </view>
