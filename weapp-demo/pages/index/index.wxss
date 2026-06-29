@@ -973,58 +973,13 @@ page {
 .my-title-tag.rainbow.active{box-shadow:0 0 20rpx rgba(255,107,157,.5),0 0 12rpx rgba(86,199,247,.35),inset 0 0 0 2rpx rgba(255,255,255,.3);transform:scale(1.06)}
 @keyframes rainbowShift{0%{background-position:0% 50%}100%{background-position:200% 50%}}
 .friend-title{color:#ffd166;font-size:20rpx;font-weight:700;margin-left:8rpx}
-
-/* 彩蛋签主题图案 */
-.ac-egg{position:relative;overflow:hidden;animation:eggGlow 3s ease-in-out infinite alternate}
-@keyframes eggGlow{0%{filter:brightness(1)}100%{filter:brightness(1.08)}}
-.ac-egg .card-v3-name{font-size:18px;filter:drop-shadow(0 1px 3px rgba(0,0,0,.4));letter-spacing:.05em}
-.ac-egg .card-v3-text{font-weight:500}
-.ac-egg .card-v3-bottom{border-color:rgba(255,255,255,.15)}
-.ac-egg .card-v3-action{font-weight:600}
-
-/* 桃花签 - 扁平游戏风桃花底纹 */
-.ac-egg-peach .egg-deco{position:absolute;inset:0;z-index:0;pointer-events:none}
-.ac-egg-peach .egg-glow{position:absolute;bottom:-20rpx;right:-20rpx;width:160rpx;height:160rpx;background:radial-gradient(circle,rgba(255,180,210,.18),transparent 70%);filter:blur(8px)}
-.ac-egg-peach .egg-crown{position:absolute;bottom:18rpx;right:8rpx;width:90rpx;height:70rpx;background:radial-gradient(ellipse at 50% 80%,rgba(255,200,220,.22),rgba(255,150,190,.08));border-radius:30% 70% 50% 50% / 40% 30% 70% 60%;box-shadow:inset 0 -8rpx 16rpx rgba(255,255,255,.04)}
-.ac-egg-peach .egg-crown2{position:absolute;bottom:45rpx;right:25rpx;width:55rpx;height:45rpx;background:radial-gradient(ellipse,rgba(255,210,230,.16),rgba(255,160,200,.05));border-radius:70% 30% 50% 50%;filter:blur(2px)}
-.ac-egg-peach .egg-stem{position:absolute;bottom:8rpx;right:45rpx;width:10rpx;height:50rpx;background:linear-gradient(0deg,rgba(255,255,255,.06),rgba(255,200,220,.14));border-radius:40%;transform:rotate(-5deg)}
-.ac-egg-peach .egg-petal{position:absolute;width:10rpx;height:10rpx;background:rgba(255,220,235,.2);border-radius:50% 50% 50% 0;box-shadow:0 0 6rpx rgba(255,180,210,.12)}
-.ac-egg-peach .egg-petal:nth-child(5){bottom:75rpx;right:18rpx;transform:rotate(-30deg)}
-.ac-egg-peach .egg-petal:nth-child(6){bottom:85rpx;right:55rpx;transform:rotate(15deg);width:8rpx;height:8rpx}
-.ac-egg-peach .egg-petal:nth-child(7){bottom:60rpx;right:65rpx;transform:rotate(-50deg);width:7rpx;height:7rpx}
-
-/* 金榜签 - 扁平游戏风卷轴底纹 */
-.ac-egg-golden .egg-deco{position:absolute;inset:0;z-index:0;pointer-events:none}
-.ac-egg-golden .egg-glow{position:absolute;bottom:-15rpx;right:-15rpx;width:140rpx;height:140rpx;background:radial-gradient(circle,rgba(255,200,50,.15),transparent 70%);filter:blur(10px)}
-.ac-egg-golden .egg-body{position:absolute;bottom:20rpx;right:20rpx;width:75rpx;height:110rpx;background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.05));border-radius:4rpx;border-left:3rpx solid rgba(255,255,255,.1);border-right:3rpx solid rgba(255,255,255,.1)}
-.ac-egg-golden .egg-cap{position:absolute;width:20rpx;height:20rpx;background:radial-gradient(circle at 35% 35%,rgba(255,255,255,.2),rgba(255,255,255,.08));border-radius:50%;border:2rpx solid rgba(255,255,255,.12)}
-.ac-egg-golden .egg-cap.t{bottom:132rpx;right:47rpx}
-.ac-egg-golden .egg-cap.b{bottom:12rpx;right:47rpx}
-.ac-egg-golden .egg-seal-stamp{position:absolute;bottom:142rpx;right:28rpx;width:22rpx;height:22rpx;background:radial-gradient(circle at 40% 40%,rgba(255,255,255,.18),rgba(255,255,255,.06));border:2rpx solid rgba(255,255,255,.14);border-radius:3rpx;transform:rotate(8deg)}
-.ac-egg-golden .egg-lines{position:absolute;bottom:35rpx;right:28rpx;display:flex;flex-direction:column;gap:8rpx}
-.ac-egg-golden .egg-lines view{height:2rpx;background:rgba(255,255,255,.1);border-radius:1rpx}
-
-/* 归家签 - 扁平游戏风小屋底纹 */
-.ac-egg-home .egg-deco{position:absolute;inset:0;z-index:0;pointer-events:none}
-.ac-egg-home .egg-moon{position:absolute;bottom:-10rpx;right:-10rpx;width:130rpx;height:130rpx;background:radial-gradient(circle,rgba(150,200,255,.12),transparent 70%);filter:blur(12px)}
-.ac-egg-home .egg-wall{position:absolute;bottom:15rpx;right:22rpx;width:80rpx;height:45rpx;background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.06));border-radius:5rpx}
-.ac-egg-home .egg-roof{position:absolute;bottom:58rpx;right:12rpx;width:100rpx;height:35rpx;background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.08));border-radius:50rpx 50rpx 0 0;box-shadow:inset 0 -4rpx 8rpx rgba(255,255,255,.03)}
-.ac-egg-home .egg-lit-win{position:absolute;bottom:32rpx;right:55rpx;width:16rpx;height:16rpx;background:radial-gradient(circle,rgba(255,220,100,.22),rgba(255,200,80,.06));border-radius:50%;border:2rpx solid rgba(255,255,255,.1);box-shadow:0 0 10rpx rgba(255,200,80,.1)}
-.ac-egg-home .egg-arch{position:absolute;bottom:15rpx;right:38rpx;width:18rpx;height:30rpx;background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.04));border-radius:9rpx 9rpx 0 0;border:2rpx solid rgba(255,255,255,.08);border-bottom:none}
-.ac-egg-home .egg-puff{position:absolute;width:8rpx;height:8rpx;background:rgba(255,255,255,.08);border-radius:50%;filter:blur(1rpx)}
-.ac-egg-home .egg-puff:nth-child(6){bottom:88rpx;right:28rpx}
-.ac-egg-home .egg-puff:nth-child(7){bottom:94rpx;right:22rpx;width:6rpx;height:6rpx}
-
-/* 远行签 - 扁平游戏风山丘底纹 */
-.ac-egg-travel .egg-deco{position:absolute;inset:0;z-index:0;pointer-events:none}
-.ac-egg-travel .egg-haze{position:absolute;bottom:-15rpx;right:-15rpx;width:140rpx;height:140rpx;background:radial-gradient(circle,rgba(128,203,196,.12),transparent 70%);filter:blur(10px)}
-.ac-egg-travel .egg-bg-mt{position:absolute;bottom:10rpx;right:-10rpx;width:130rpx;height:70rpx;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border-radius:50% 55% 0 0;filter:blur(2rpx)}
-.ac-egg-travel .egg-fg-mt{position:absolute;bottom:10rpx;right:50rpx;width:80rpx;height:50rpx;background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.06));border-radius:45% 55% 0 0}
-.ac-egg-travel .egg-peak{position:absolute;bottom:55rpx;right:30rpx;width:50rpx;height:35rpx;background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.04));border-radius:50% 50% 0 0;filter:blur(1rpx)}
-.ac-egg-travel .egg-flag-stick{position:absolute;bottom:46rpx;right:75rpx;width:2rpx;height:22rpx;background:rgba(255,255,255,.14);border-radius:1rpx}
-.ac-egg-travel .egg-flag-cloth{position:absolute;bottom:64rpx;right:76rpx;width:12rpx;height:8rpx;background:linear-gradient(135deg,rgba(255,255,255,.14),rgba(255,255,255,.08));border-radius:0 2rpx 2rpx 0}
-
-.friend-title{color:#ffd166;font-size:20rpx;font-weight:700;margin-left:8rpx}
+/* 奇遇收藏家 - 全局彩虹 */
+.my-title-badge.rainbow{background:linear-gradient(90deg,#ff6b9d,#ffa751,#ffd700,#56c7f7,#c084fc,#ff6b9d);background-size:200% 100%;color:#fff;text-shadow:0 1rpx 4rpx rgba(0,0,0,.3);box-shadow:0 0 14rpx rgba(255,107,157,.35),0 0 8rpx rgba(86,199,247,.25);animation:rainbowShift 3s linear infinite}
+.friend-title.rainbow{background:linear-gradient(90deg,#ff6b9d,#ffa751,#ffd700,#56c7f7,#c084fc,#ff6b9d);background-size:200% 100%;color:#fff;text-shadow:0 1rpx 4rpx rgba(0,0,0,.3);box-shadow:0 0 14rpx rgba(255,107,157,.35),0 0 8rpx rgba(86,199,247,.25);animation:rainbowShift 3s linear infinite;padding:2rpx 10rpx;border-radius:10rpx;font-size:18rpx}
+/* 大吉之人 - 全局金红 */
+.my-title-badge.daji{background:linear-gradient(135deg,#c51f1a,#ffd700);background-size:200% 200%;color:#fff;text-shadow:0 1rpx 4rpx rgba(0,0,0,.3);box-shadow:0 0 14rpx rgba(197,31,26,.4),0 0 8rpx rgba(255,215,0,.3);animation:dajiGlow 2.5s ease-in-out infinite}
+.friend-title.daji{background:linear-gradient(135deg,#c51f1a,#ffd700);background-size:200% 200%;color:#fff;text-shadow:0 1rpx 4rpx rgba(0,0,0,.3);box-shadow:0 0 14rpx rgba(197,31,26,.4),0 0 8rpx rgba(255,215,0,.3);animation:dajiGlow 2.5s ease-in-out infinite;padding:2rpx 10rpx;border-radius:10rpx;font-size:18rpx}
+@keyframes dajiGlow{0%{background-position:0% 50%;box-shadow:0 0 10rpx rgba(197,31,26,.3),0 0 6rpx rgba(255,215,0,.2)}50%{background-position:100% 50%;box-shadow:0 0 18rpx rgba(197,31,26,.55),0 0 12rpx rgba(255,215,0,.4)}100%{background-position:0% 50%;box-shadow:0 0 10rpx rgba(197,31,26,.3),0 0 6rpx rgba(255,215,0,.2)}}
 
 /* 彩蛋签主题图案 */
 .ac-egg{position:relative;overflow:hidden;animation:eggGlow 3s ease-in-out infinite alternate}

@@ -8,7 +8,7 @@
       <text class="streak-num">{{streak}}</text>
       <text class="streak-label">连续天</text>
     </view>
-    <view wx:if="{{myTitle}}" class="my-title-badge">{{myTitle}}</view>
+    <view wx:if="{{myTitle}}" class="my-title-badge {{myTitle === '奇遇收藏家' ? 'rainbow' : ''}} {{myTitle === '大吉之人' ? 'daji' : ''}}">{{myTitle}}</view>
   </view>
 
   <view wx:if="{{tab === 'draw'}}" class="page" style="padding-bottom:80rpx">
@@ -241,7 +241,7 @@
         <view class="rank">{{index + 1}}</view>
         <view class="avatar"></view>
         <view class="friend-meta">
-          <view>{{item.name}}{{item.isMe ? '（我）' : ''}}<text wx:if="{{item.title}}" class="friend-title"> · {{item.title}}</text></view>
+          <view>{{item.name}}{{item.isMe ? '（我）' : ''}}<text wx:if="{{item.title}}" class="friend-title {{item.title === '奇遇收藏家' ? 'rainbow' : ''}} {{item.title === '大吉之人' ? 'daji' : ''}}"> · {{item.title}}</text></view>
           <text>{{item.grade}} · {{item.card}} · 好运值 {{item.score}}</text>
         </view>
       </view>
