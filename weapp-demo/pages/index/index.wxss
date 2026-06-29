@@ -965,7 +965,10 @@ page {
 .my-titles-title{font-size:28rpx;color:#ffd166;font-weight:700;margin-bottom:16rpx}
 .my-titles-list{display:flex;flex-wrap:wrap;gap:12rpx}
 .my-titles-empty{font-size:22rpx;color:rgba(230,189,130,.4);width:100%;text-align:center}
-.my-title-tag{background:linear-gradient(135deg,#ffd700,#ff8c00);color:#3a0f08;font-size:22rpx;padding:8rpx 20rpx;border-radius:20rpx;font-weight:700;letter-spacing:1rpx}
+.my-title-tag{position:relative;background:linear-gradient(135deg,#ffd700,#ff8c00);color:#3a0f08;font-size:22rpx;padding:8rpx 20rpx;border-radius:20rpx;font-weight:700;letter-spacing:1rpx;transition:all .2s}
+.my-title-tag.active{background:linear-gradient(135deg,#ffec8b,#ffb347);color:#3a0f08;box-shadow:0 0 16rpx rgba(255,215,0,.5),inset 0 0 0 2rpx rgba(255,255,255,.4);transform:scale(1.06)}
+.my-titles-hint{font-size:20rpx;color:rgba(230,189,130,.5);font-weight:400;margin-left:8rpx}
+.title-crown{font-size:18rpx;margin-right:4rpx}
 .friend-title{color:#ffd166;font-size:20rpx;font-weight:700;margin-left:8rpx}
 
 /* 彩蛋签主题图案 */

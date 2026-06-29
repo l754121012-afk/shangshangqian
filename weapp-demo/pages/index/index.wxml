@@ -257,11 +257,13 @@
   <view wx:if="{{tab === 'me'}}" class="page" style="padding-bottom:80rpx">
     <view class="title">今日<text>分享卡</text></view>
     <view class="my-titles-section">
-      <view class="my-titles-title">我的称号</view>
+      <view class="my-titles-title">我的称号 <text class="my-titles-hint">（点击称号可设置优先展示）</text></view>
       <view class="my-titles-list">
         <view wx:if="{{myTitles.length === 0}}" class="my-titles-empty">集齐同一等级全部签卡即可获得称号</view>
         <block wx:for="{{myTitles}}" wx:key="*this">
-          <view class="my-title-tag">{{item}}</view>
+          <view class="my-title-tag {{item === preferredTitle ? 'active' : ''}}" bindtap="selectPreferredTitle" data-title="{{item}}">
+            <text wx:if="{{item === preferredTitle}}" class="title-crown">👑</text>{{item}}
+          </view>
         </block>
       </view>
     </view>

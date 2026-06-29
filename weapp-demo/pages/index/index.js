@@ -84,7 +84,8 @@ Page({
     dissolveInput: '',
     dailyPool: [],
     myTitle: '',
-    myTitles: []
+    myTitles: [],
+    preferredTitle: ''
   },
 
   onLoad() {
@@ -128,8 +129,9 @@ Page({
       const isComplete = allIds.every(id => collection.includes(id))
       if (isComplete) titles.push(titleMap[grade])
     }
-    const myTitle = titles.length > 0 ? titles[titles.length - 1] : ''
-    this.setData({ myTitle, myTitles: titles })
+    const preferredTitle = wx.getStorageSync('preferredTitle') || ''
+    const myTitle = preferredTitle && titles.includes(preferredTitle) ? preferredTitle : (titles.length > 0 ? titles[titles.length - 1] : '')
+    this.setData({ myTitle, myTitles: titles, preferredTitle })
     this.renderAll()
   },
 
@@ -302,10 +304,20 @@ Page({
         wx.setStorageSync(key, true)
         wx.showToast({ title: '集齐' + grade + '！获得"' + gradeMap[grade] + '"称号', icon: 'none', duration: 2500 })
         const titles = [...this.data.myTitles, gradeMap[grade]]
-        this.setData({ myTitle: gradeMap[grade], myTitles: titles })
+        const preferredTitle = this.data.preferredTitle
+        const myTitle = preferredTitle && titles.includes(preferredTitle) ? preferredTitle : gradeMap[grade]
+        this.setData({ myTitle, myTitles: titles })
         wx.setStorageSync('myTitles', titles)
       }
     }
+  },
+
+  selectPreferredTitle(e) {
+    const title = e.currentTarget.dataset.title
+    if (this.data.preferredTitle === title) return
+    this.setData({ preferredTitle: title, myTitle: title })
+    wx.setStorageSync('preferredTitle', title)
+    wx.showToast({ title: '已设置"' + title + '"为优先展示', icon: 'none' })
   },
 
   renderAll() {
@@ -433,7 +445,8 @@ Page({
       dissolveInputVisible: false, dissolveInput: '',
       dailyPool: [],
       myTitle: '',
-      myTitles: []
+      myTitles: [],
+      preferredTitle: ''
     })
     wx.setStorageSync('drawDate', todayKey())
     wx.setStorageSync('todayScore', 0)
