@@ -8,7 +8,7 @@
       <text class="streak-num">{{streak}}</text>
       <text class="streak-label">连续天</text>
     </view>
-    <view wx:if="{{myTitle}}" class="my-title-badge {{myTitle === '奇遇收藏家' ? 'rainbow' : ''}} {{myTitle === '大吉之人' ? 'daji' : ''}}">{{myTitle}}</view>
+    <view wx:if="{{myTitle}}" class="title-badge-wrap {{myTitle === '大吉之人' ? 'has-sparkle' : ''}}"><view class="my-title-badge {{myTitle === '奇遇收藏家' ? 'rainbow' : ''}} {{myTitle === '大吉之人' ? 'daji' : ''}}">{{myTitle}}</view><view wx:if="{{myTitle === '大吉之人'}}" class="sparkle"><view class="spk spk1"></view><view class="spk spk2"></view><view class="spk spk3"></view><view class="spk spk4"></view></view></view>
   </view>
 
   <view wx:if="{{tab === 'draw'}}" class="page" style="padding-bottom:80rpx">
