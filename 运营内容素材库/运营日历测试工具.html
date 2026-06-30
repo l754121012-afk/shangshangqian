@@ -318,6 +318,25 @@ body {
   .content-grid { grid-template-columns: 1fr; }
   .header { flex-direction: column; gap: 12px; align-items: flex-start; }
 }
+
+.open-folder-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 10px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: rgba(255,215,0,.08);
+  border: 1px solid rgba(255,215,0,.25);
+  color: var(--gold-dim);
+  font-size: 11px;
+  cursor: pointer;
+  transition: all .2s;
+}
+.open-folder-btn:hover {
+  background: rgba(255,215,0,.15);
+  border-color: rgba(255,215,0,.4);
+}
 </style>
 </head>
 <body>
@@ -347,6 +366,10 @@ body {
       <div class="stat-num" id="total-dy">4</div>
       <div class="stat-label">抖音</div>
     </div>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:flex-end;">
+
+    <button class="open-folder-btn" style="margin-top:12px;padding:10px 20px;font-size:13px;" onclick="openFolder('wx')">📂 打开素材文件夹（外部投放内容）</button>
   </div>
 </div>
 
@@ -455,6 +478,14 @@ body {
           <label>当日分享次数</label>
           <input type="number" id="sim-share" placeholder="预估10-50" onchange="updateSim()">
         </div>
+      </div>
+
+    <div class="sim-panel">
+      <div class="sim-title">全自动素材（无需手动操作，仅供参考）</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <button class="open-folder-btn" onclick="openFolder('auto-quotes')">📊 daily-quotes.json（每日金句）</button>
+        <button class="open-folder-btn" onclick="openFolder('auto-templates')">🎨 share-templates.json（分享模板）</button>
+        <button class="open-folder-btn" onclick="openFolder('auto-holiday')">🎉 holiday-events.json（节日专题）</button>
       </div>
     </div>
   </div>
@@ -682,7 +713,7 @@ function getDyRecommend(weekNum) {
 }
 
 // 生成推荐区块HTML
-function buildRecommendHTML(recommend) {
+function buildRecommendHTML(recommend, platformType) {
   if (!recommend) return '';
   let html = '<div class="recommend"><div class="recommend-title">推荐素材</div>';
 
@@ -702,6 +733,16 @@ function buildRecommendHTML(recommend) {
     html += '<div class="recommend-item"><span class="rec-label">配图建议：</span><span class="rec-value">' + recommend.imageSuggestion + '</span></div>';
   }
 
+  // 添加文件夹按钮
+  var folderBtnMap = {
+    'wx': '<button class="open-folder-btn" onclick="openFolder(\'wx\')">\ud83d\udcc2 打开微信群早安文案文件夹</button>',
+    'xhs': '<button class="open-folder-btn" onclick="openFolder(\'xhs\')">\ud83d\udcc2 打开小红书文案文件夹</button>',
+    'mp': '<button class="open-folder-btn" onclick="openFolder(\'mp\')">\ud83d\udcc2 打开公众号文章文件夹</button>',
+    'dy': '<button class="open-folder-btn" onclick="openFolder(\'dy\')">\ud83d\udcc2 打开抖音脚本文件夹</button>'
+  };
+  if (platformType && folderBtnMap[platformType]) {
+    html += folderBtnMap[platformType];
+  }
   html += '</div>';
   return html;
 }
@@ -791,7 +832,7 @@ function renderDay() {
     document.getElementById('wx-status').className = 'platform-status';
   }
   // 微信群推荐素材
-  document.getElementById('wx-recommend').innerHTML = buildRecommendHTML(getWxRecommend(currentDay));
+  document.getElementById('wx-recommend').innerHTML = buildRecommendHTML(getWxRecommend(currentDay), 'wx');
   
   // 小红书
   const xhs = xhsPosts.find(p => p.day === currentDay);
@@ -803,7 +844,7 @@ function renderDay() {
     document.getElementById('xhs-status').className = 'platform-status';
   }
   // 小红书推荐素材
-  document.getElementById('xhs-recommend').innerHTML = buildRecommendHTML(getXhsRecommend(currentDay));
+  document.getElementById('xhs-recommend').innerHTML = buildRecommendHTML(getXhsRecommend(currentDay), 'xhs');
   
   // 公众号（每周一）
   const weekNum = Math.ceil(currentDay / 7);
@@ -815,7 +856,7 @@ function renderDay() {
     mpStatus.textContent = '本周发布';
     mpStatus.className = 'platform-status';
     // 公众号推荐素材（仅在发布日显示）
-    document.getElementById('mp-recommend').innerHTML = buildRecommendHTML(getMpRecommend(weekNum));
+    document.getElementById('mp-recommend').innerHTML = buildRecommendHTML(getMpRecommend(weekNum), 'mp');
   } else {
     mpEl.innerHTML = '<span class="empty">本周暂无公众号文章，公众号每周一发布</span>';
     mpStatus.textContent = '本周无';
@@ -832,7 +873,7 @@ function renderDay() {
     dyStatus.textContent = '本周拍摄';
     dyStatus.className = 'platform-status';
     // 抖音推荐素材（仅在发布日显示）
-    document.getElementById('dy-recommend').innerHTML = buildRecommendHTML(getDyRecommend(weekNum));
+    document.getElementById('dy-recommend').innerHTML = buildRecommendHTML(getDyRecommend(weekNum), 'dy');
   } else {
     dyEl.innerHTML = '<span class="empty">本周暂无抖音视频，抖音每周三发布</span>';
     dyStatus.textContent = '本周无';
@@ -850,6 +891,26 @@ function renderDay() {
 function updateSim() {
   // 这里可以添加数据汇总逻辑
   console.log('数据已更新');
+}
+
+
+// ============ 打开素材文件夹 ============
+function openFolder(type) {
+  var basePath = 'file:///C:/Users/李泽文/AppData/Roaming/TRAE SOLO CN/VMCache/main-TRAE_SOLO-Yinli/drive/F/ai小程序和网页项目/今日上上签_正式项目/运营内容素材库/外部投放内容';
+  var autoBase = 'file:///C:/Users/李泽文/AppData/Roaming/TRAE SOLO CN/VMCache/main-TRAE_SOLO-Yinli/drive/F/ai小程序和网页项目/今日上上签_正式项目/运营内容素材库';
+
+  var folders = {
+    'wx': basePath + '/',
+    'xhs': basePath + '/',
+    'mp': basePath + '/',
+    'dy': basePath + '/',
+    'auto-quotes': autoBase + '/daily-quotes.json',
+    'auto-templates': autoBase + '/share-templates.json',
+    'auto-holiday': autoBase + '/holiday-events.json'
+  };
+
+  var target = folders[type] || basePath + '/';
+  window.open(target, '_blank');
 }
 
 // 初始化
