@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>签卡预览 · 所有签卡</title>
+<style>
+:root{--bg:#0d0201;--ink:#fff4df;--muted:rgba(230,189,130,.6);--rule:rgba(255,209,102,.2);--gold:#ffd700;}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0;padding:32px;}
+h1{font-size:22px;font-weight:700;text-align:center;margin-bottom:8px;} .sub{text-align:center;color:var(--muted);font-size:13px;margin-bottom:32px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;max-width:1400px;margin:0 auto;}
+.card{border-radius:24px;padding:28px 22px;position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5);display:flex;flex-direction:column;min-height:420px;}
+.card .grade{font-size:12px;letter-spacing:2px;opacity:.7;margin-bottom:12px;}
+.card .seal{position:absolute;top:28px;right:24px;width:44px;height:52px;border-radius:8px;background:#c51f1a;color:#fff7e8;display:flex;align-items:center;justify-content:center;flex-direction:column;font-size:20px;font-weight:700;transform:rotate(5deg);}
+.card .seal-sub{font-size:10px;margin-top:2px;}
+.card .kw{font-size:36px;font-weight:800;line-height:1.1;margin-top:24px;font-family:Georgia,serif;}
+.card .txt{font-size:14px;line-height:1.6;margin-top:16px;opacity:.85;}
+.card .pills{display:flex;gap:8px;margin-top:20px;}
+.card .pill{border:1px solid rgba(0,0,0,.15);border-radius:12px;padding:10px 12px;font-size:12px;flex:1;}
+.card .pill strong{display:block;font-size:15px;margin-bottom:2px;}
+.card .micro{margin-top:16px;padding:14px;border-radius:14px;font-size:13px;line-height:1.5;}
+.card .micro strong{display:block;margin-bottom:4px;}
+.card .score{position:absolute;bottom:16px;right:20px;font-size:12px;opacity:.5;}
+.egg-tag{position:absolute;top:16px;left:16px;background:linear-gradient(90deg,#ff6b9d,#ffa751,#ffd700,#56c7f7,#c084fc);padding:3px 10px;border-radius:10px;font-size:10px;color:#fff;font-weight:700;}
+.filter-bar{display:flex;justify-content:center;gap:12px;margin-bottom:24px;flex-wrap:wrap;}
+.filter-btn{padding:8px 18px;border-radius:20px;border:1px solid var(--rule);background:transparent;color:var(--muted);cursor:pointer;font-size:13px;}
+.filter-btn.active{background:linear-gradient(135deg,var(--gold),#ff8c00);color:#1a0a05;border-color:transparent;font-weight:600;}
+</style></head><body>
+<h1>签卡预览</h1>
+<div class="sub">所有签卡 · 含彩蛋签 · 点击上方筛选查看不同等级</div>
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filter('all')">全部</button>
+  <button class="filter-btn" onclick="filter('大吉签')">大吉签</button>
+  <button class="filter-btn" onclick="filter('上上签')">上上签</button>
+  <button class="filter-btn" onclick="filter('彩蛋签')">彩蛋签</button>
+</div>
+<div class="grid" id="card-grid">
+
+<div class="card" data-grade="大吉签" style="background:linear-gradient(160deg, #fff0c4, #f0b34d);color:#48160c;">
+  
+  <div class="grade">大吉签</div>
+  <div class="seal" style="background:#c51f1a;">旺<span class="seal-sub">今日</span></div>
+  <div class="kw">财气临门</div>
+  <div class="txt">今天适合把一个正在犹豫的机会推进半步。</div>
+  <div class="pills">
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#c51f1a;">宜</strong>主动推进</div>
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#c51f1a;">忌</strong>空想暴富</div>
+  </div>
+  <div class="micro" style="background:rgba(0,0,0,.08);"><strong style="color:#c51f1a;">微行动</strong>发出一条能推动事情的小消息。</div>
+  <div class="score">score: 92</div>
+</div>
+
+<div class="card" data-grade="大吉签" style="background:linear-gradient(160deg, #fff0c4, #f0b34d);color:#48160c;">
+  
+  <div class="grade">大吉签</div>
+  <div class="seal" style="background:#c51f1a;">盛<span class="seal-sub">今日</span></div>
+  <div class="kw">贵人指路</div>
+  <div class="txt">留意身边主动给你建议的人，今天他们的话值得听。</div>
+  <div class="pills">
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#c51f1a;">宜</strong>主动倾听</div>
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#c51f1a;">忌</strong>自顾自走</div>
+  </div>
+  <div class="micro" style="background:rgba(0,0,0,.08);"><strong style="color:#c51f1a;">微行动</strong>回复一个你拖延了的对话。</div>
+  <div class="score">score: 90</div>
+</div>
+
+<div class="card" data-grade="大吉签" style="background:linear-gradient(160deg, #fff0c4, #f0b34d);color:#48160c;">
+  
+  <div class="grade">大吉签</div>
+  <div class="seal" style="background:#c51f1a;">发<span class="seal-sub">今日</span></div>
+  <div class="kw">财源广进</div>
+  <div class="txt">今天的每一个小决定，都会在未来三周产生回响。</div>
+  <div class="pills">
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#c51f1a;">宜</strong>做选择</div>
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#c51f1a;">忌</strong>拖延决定</div>
+  </div>
+  <div class="micro" style="background:rgba(0,0,0,.08);"><strong style="color:#c51f1a;">微行动</strong>把最犹豫的一件事写下利弊。</div>
+  <div class="score">score: 95</div>
+</div>
+
+<div class="card" data-grade="大吉签" style="background:linear-gradient(160deg, #fff0c4, #f0b34d);color:#48160c;">
+  
+  <div class="grade">大吉签</div>
+  <div class="seal" style="background:#c51f1a;">顺<span class="seal-sub">今日</span></div>
+  <div class="kw">一帆风顺</div>
+  <div class="txt">今天遇到的人，可能比你想的更愿意帮你。</div>
+  <div class="pills">
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#c51f1a;">宜</strong>主动开口</div>
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#c51f1a;">忌</strong>独自硬撑</div>
+  </div>
+  <div class="micro" style="background:rgba(0,0,0,.08);"><strong style="color:#c51f1a;">微行动</strong>向一个你觉得可以信任的人问一个问题。</div>
+  <div class="score">score: 93</div>
+</div>
+
+<div class="card" data-grade="大吉签" style="background:linear-gradient(160deg, #fff0c4, #f0b34d);color:#48160c;">
+  
+  <div class="grade">大吉签</div>
+  <div class="seal" style="background:#c51f1a;">锦<span class="seal-sub">今日</span></div>
+  <div class="kw">锦绣前程</div>
+  <div class="txt">今天适合做一件能留下痕迹的小事，它会慢慢变成大事。</div>
+  <div class="pills">
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#c51f1a;">宜</strong>落笔</div>
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#c51f1a;">忌</strong>空想</div>
+  </div>
+  <div class="micro" style="background:rgba(0,0,0,.08);"><strong style="color:#c51f1a;">微行动</strong>写一条今天的工作或学习记录。</div>
+  <div class="score">score: 96</div>
+</div>
+
+<div class="card" data-grade="大吉签" style="background:linear-gradient(160deg, #fff0c4, #f0b34d);color:#48160c;">
+  
+  <div class="grade">大吉签</div>
+  <div class="seal" style="background:#c51f1a;">紫<span class="seal-sub">今日</span></div>
+  <div class="kw">紫气东来</div>
+  <div class="txt">今天遇到的机会，比你以为的要多一个。</div>
+  <div class="pills">
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#c51f1a;">宜</strong>多看一眼</div>
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#c51f1a;">忌</strong>埋头</div>
+  </div>
+  <div class="micro" style="background:rgba(0,0,0,.08);"><strong style="color:#c51f1a;">微行动</strong>打开一个你很久没点开的 app 或链接。</div>
+  <div class="score">score: 94</div>
+</div>
+
+<div class="card" data-grade="上上签" style="background:linear-gradient(160deg, #fff0c4, #f0b34d);color:#48160c;">
+  
+  <div class="grade">上上签</div>
+  <div class="seal" style="background:#c51f1a;">进<span class="seal-sub">今日</span></div>
+  <div class="kw">稳步进财</div>
+  <div class="txt">不要追最快的机会，先守住能稳定变好的部分。</div>
+  <div class="pills">
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#c51f1a;">宜</strong>整理账目</div>
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#c51f1a;">忌</strong>冲动下单</div>
+  </div>
+  <div class="micro" style="background:rgba(0,0,0,.08);"><strong style="color:#c51f1a;">微行动</strong>记录今天一笔不必要支出。</div>
+  <div class="score">score: 86</div>
+</div>
+
+<div class="card" data-grade="上上签" style="background:linear-gradient(160deg, #fff0c4, #f0b34d);color:#48160c;">
+  
+  <div class="grade">上上签</div>
+  <div class="seal" style="background:#c51f1a;">升<span class="seal-sub">今日</span></div>
+  <div class="kw">步步高升</div>
+  <div class="txt">今天推进的事情，比昨天多走一小步就是赢。</div>
+  <div class="pills">
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#c51f1a;">宜</strong>先收尾</div>
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#c51f1a;">忌</strong>又开新坑</div>
+  </div>
+  <div class="micro" style="background:rgba(0,0,0,.08);"><strong style="color:#c51f1a;">微行动</strong>把昨天未完成的一件小事收尾。</div>
+  <div class="score">score: 83</div>
+</div>
+
+<div class="card" data-grade="上上签" style="background:linear-gradient(160deg, #fff0c4, #f0b34d);color:#48160c;">
+  
+  <div class="grade">上上签</div>
+  <div class="seal" style="background:#c51f1a;">转<span class="seal-sub">今日</span></div>
+  <div class="kw">转机将至</div>
+  <div class="txt">今天的机会藏在一个你平时忽略的小入口里。</div>
+  <div class="pills">
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#c51f1a;">宜</strong>换个入口</div>
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#c51f1a;">忌</strong>死磕旧路</div>
+  </div>
+  <div class="micro" style="background:rgba(0,0,0,.08);"><strong style="color:#c51f1a;">微行动</strong>把卡住的事换一种问法。</div>
+  <div class="score">score: 82</div>
+</div>
+
+<div class="card" data-grade="上上签" style="background:linear-gradient(160deg, #fff0c4, #f0b34d);color:#48160c;">
+  
+  <div class="grade">上上签</div>
+  <div class="seal" style="background:#c51f1a;">进<span class="seal-sub">今日</span></div>
+  <div class="kw">开门见财</div>
+  <div class="txt">今天适合把一个新想法说给第一个人听。</div>
+  <div class="pills">
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#c51f1a;">宜</strong>开口表达</div>
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#c51f1a;">忌</strong>闷头做事</div>
+  </div>
+  <div class="micro" style="background:rgba(0,0,0,.08);"><strong style="color:#c51f1a;">微行动</strong>用一句话描述你最近的一个小想法。</div>
+  <div class="score">score: 85</div>
+</div>
+
+<div class="card" data-grade="上上签" style="background:linear-gradient(160deg, #fff0c4, #f0b34d);color:#48160c;">
+  
+  <div class="grade">上上签</div>
+  <div class="seal" style="background:#c51f1a;">星<span class="seal-sub">今日</span></div>
+  <div class="kw">福星高照</div>
+  <div class="txt">今天适合做一件你一直说'等准备好了再做'的事。</div>
+  <div class="pills">
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#c51f1a;">宜</strong>直接开始</div>
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#c51f1a;">忌</strong>继续准备</div>
+  </div>
+  <div class="micro" style="background:rgba(0,0,0,.08);"><strong style="color:#c51f1a;">微行动</strong>花5分钟做那件'还没准备好'的事。</div>
+  <div class="score">score: 84</div>
+</div>
+
+<div class="card" data-grade="上上签" style="background:linear-gradient(160deg, #fff0c4, #f0b34d);color:#48160c;">
+  
+  <div class="grade">上上签</div>
+  <div class="seal" style="background:#c51f1a;">转<span class="seal-sub">今日</span></div>
+  <div class="kw">时来运转</div>
+  <div class="txt">今天适合把一件卡住的事换一个入口再试一次。</div>
+  <div class="pills">
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#c51f1a;">宜</strong>换入口</div>
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#c51f1a;">忌</strong>死磕</div>
+  </div>
+  <div class="micro" style="background:rgba(0,0,0,.08);"><strong style="color:#c51f1a;">微行动</strong>把卡住的事换一种问法或路径。</div>
+  <div class="score">score: 83</div>
+</div>
+
+<div class="card" data-grade="彩蛋签" style="background:linear-gradient(160deg, #ff6b9d44, #ff6b9d88);color:#fff;">
+  <div class="egg-tag">彩蛋</div>
+  <div class="grade">彩蛋签</div>
+  <div class="seal" style="background:#ff6b9d;">桃<span class="seal-sub">今日</span></div>
+  <div class="kw">桃花</div>
+  <div class="txt">今天适合主动联系一个你想念的人。</div>
+  <div class="pills">
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#ff6b9d;">宜</strong>开口</div>
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#ff6b9d;">忌</strong>等待</div>
+  </div>
+  <div class="micro" style="background:rgba(0,0,0,.08);"><strong style="color:#ff6b9d;">微行动</strong>发一条消息给一个你很久没联系的人。</div>
+  <div class="score">score: 88</div>
+</div>
+
+<div class="card" data-grade="彩蛋签" style="background:linear-gradient(160deg, #ffd70044, #ffd70088);color:#fff;">
+  <div class="egg-tag">彩蛋</div>
+  <div class="grade">彩蛋签</div>
+  <div class="seal" style="background:#ffd700;">榜<span class="seal-sub">今日</span></div>
+  <div class="kw">金榜</div>
+  <div class="txt">今天适合把学到的知识用一句话讲出来。</div>
+  <div class="pills">
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#ffd700;">宜</strong>输出</div>
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#ffd700;">忌</strong>只输入</div>
+  </div>
+  <div class="micro" style="background:rgba(0,0,0,.08);"><strong style="color:#ffd700;">微行动</strong>用一句话总结今天学到的一个点。</div>
+  <div class="score">score: 86</div>
+</div>
+
+<div class="card" data-grade="彩蛋签" style="background:linear-gradient(160deg, #56c7f744, #56c7f788);color:#fff;">
+  <div class="egg-tag">彩蛋</div>
+  <div class="grade">彩蛋签</div>
+  <div class="seal" style="background:#56c7f7;">归<span class="seal-sub">今日</span></div>
+  <div class="kw">归家</div>
+  <div class="txt">今天适合给家里打一个电话或做一件家务。</div>
+  <div class="pills">
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#56c7f7;">宜</strong>顾家</div>
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#56c7f7;">忌</strong>忽略</div>
+  </div>
+  <div class="micro" style="background:rgba(0,0,0,.08);"><strong style="color:#56c7f7;">微行动</strong>给家里人发一条问候消息。</div>
+  <div class="score">score: 82</div>
+</div>
+
+<div class="card" data-grade="彩蛋签" style="background:linear-gradient(160deg, #4db6ac44, #4db6ac88);color:#fff;">
+  <div class="egg-tag">彩蛋</div>
+  <div class="grade">彩蛋签</div>
+  <div class="seal" style="background:#4db6ac;">远<span class="seal-sub">今日</span></div>
+  <div class="kw">远行</div>
+  <div class="txt">今天适合查看一个你从未去过的地方。</div>
+  <div class="pills">
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#4db6ac;">宜</strong>探索</div>
+    <div class="pill" style="background:rgba(255,255,255,.1);"><strong style="color:#4db6ac;">忌</strong>守旧</div>
+  </div>
+  <div class="micro" style="background:rgba(0,0,0,.08);"><strong style="color:#4db6ac;">微行动</strong>在地图上标记一个你想去的地方。</div>
+  <div class="score">score: 80</div>
+</div>
+</div>
+<script>
+function filter(grade){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.card').forEach(c=>{
+    c.style.display = (grade==='all' || c.dataset.grade===grade) ? 'flex' : 'none';
+  });
+}
+</script></body></html>
