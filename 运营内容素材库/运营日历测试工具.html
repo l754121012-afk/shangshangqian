@@ -369,7 +369,7 @@ body {
   </div>
   <div style="display:flex;flex-direction:column;align-items:flex-end;">
 
-    <button class="open-folder-btn" style="margin-top:12px;padding:10px 20px;font-size:13px;" onclick="window.open('file:///C:/Users/李泽文/AppData/Roaming/TRAE SOLO CN/VMCache/main-TRAE_SOLO-Yinli/drive/F/ai小程序和网页项目/今日上上签_正式项目/运营内容素材库/素材预览/分享卡片模板预览.html', '_blank')">📂 查看所有素材预览</button>
+    <button class="open-folder-btn" style="margin-top:12px;padding:10px 20px;font-size:13px;" onclick="window.open('file:///C:/Users/李泽文/AppData/Roaming/TRAE SOLO CN/VMCache/main-TRAE_SOLO-Yinli/drive/F/ai小程序和网页项目/今日上上签_正式项目/运营内容素材库/素材预览/场景素材/场景配签卡.html', '_blank')">📂 查看场景截图素材</button>
   </div>
 </div>
 
@@ -484,7 +484,7 @@ body {
       <div class="sim-title">全自动素材（无需手动操作，仅供参考）</div>
       <div style="display:flex;gap:10px;flex-wrap:wrap;">
         <button class="open-folder-btn" onclick="window.open('file:///C:/Users/李泽文/AppData/Roaming/TRAE SOLO CN/VMCache/main-TRAE_SOLO-Yinli/drive/F/ai小程序和网页项目/今日上上签_正式项目/运营内容素材库/素材预览/每日金句预览.html', '_blank')">📊 查看每日金句预览</button>
-        <button class="open-folder-btn" onclick="window.open('file:///C:/Users/李泽文/AppData/Roaming/TRAE SOLO CN/VMCache/main-TRAE_SOLO-Yinli/drive/F/ai小程序和网页项目/今日上上签_正式项目/运营内容素材库/素材预览/分享卡片模板预览.html', '_blank')">🎨 查看分享卡片模板预览</button>
+        <button class="open-folder-btn" onclick="window.open('file:///C:/Users/李泽文/AppData/Roaming/TRAE SOLO CN/VMCache/main-TRAE_SOLO-Yinli/drive/F/ai小程序和网页项目/今日上上签_正式项目/运营内容素材库/素材预览/场景素材/场景配签卡.html', '_blank')">🎨 查看分享卡片模板预览</button>
         <button class="open-folder-btn" onclick="window.open('file:///C:/Users/李泽文/AppData/Roaming/TRAE SOLO CN/VMCache/main-TRAE_SOLO-Yinli/drive/F/ai小程序和网页项目/今日上上签_正式项目/运营内容素材库/素材预览/节日专题预览.html', '_blank')">🎉 查看节日专题预览</button>
       </div>
     </div>
@@ -735,11 +735,12 @@ function buildRecommendHTML(recommend, platformType) {
 
   // 添加预览按钮
   var previewBase = 'file:///C:/Users/李泽文/AppData/Roaming/TRAE SOLO CN/VMCache/main-TRAE_SOLO-Yinli/drive/F/ai小程序和网页项目/今日上上签_正式项目/运营内容素材库/素材预览';
+  var dailyBase = previewBase + '/每日素材包/day' + currentDay + '.html';
   var folderBtnMap = {
-    'wx': '<button class="open-folder-btn" onclick="window.open(\'' + previewBase + '/微信群早安文案预览.html\', \'_blank\')">📂 查看微信群早安文案预览</button>',
-    'xhs': '<button class="open-folder-btn" onclick="window.open(\'' + previewBase + '/小红书文案预览.html\', \'_blank\')">📂 查看小红书文案预览</button>',
-    'mp': '<button class="open-folder-btn" onclick="window.open(\'' + previewBase + '/公众号文章预览.html\', \'_blank\')">📂 查看公众号文章预览</button>',
-    'dy': '<button class="open-folder-btn" onclick="window.open(\'' + previewBase + '/抖音视频脚本预览.html\', \'_blank\')">📂 查看抖音视频脚本预览</button>'
+    'wx': '<button class="open-folder-btn" onclick="window.open(\'' + dailyBase + '\', \'_blank\')">📂 查看当日素材包</button>',
+    'xhs': '<button class="open-folder-btn" onclick="window.open(\'' + dailyBase + '\', \'_blank\')">📂 查看当日素材包</button>',
+    'mp': '<button class="open-folder-btn" onclick="window.open(\'' + dailyBase + '\', \'_blank\')">📂 查看当日素材包</button>',
+    'dy': '<button class="open-folder-btn" onclick="window.open(\'' + dailyBase + '\', \'_blank\')">📂 查看当日素材包</button>'
   };
   if (platformType && folderBtnMap[platformType]) {
     html += folderBtnMap[platformType];
