@@ -282,6 +282,35 @@ body {
   border-color: var(--gold);
 }
 
+/* 推荐素材区块 */
+.recommend {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(255,209,102,.15);
+}
+.recommend-title {
+  font-size: 11px;
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.recommend-item {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 4px;
+  font-size: 12px;
+}
+.rec-label {
+  color: var(--muted);
+  white-space: nowrap;
+}
+.rec-value {
+  color: var(--gold-dim);
+  font-weight: 500;
+}
+
 /* 响应式 */
 @media (max-width: 900px) {
   .container { grid-template-columns: 1fr; }
@@ -353,6 +382,7 @@ body {
         <div class="platform-body">
           <div class="label">文案内容</div>
           <div class="text" id="wx-content">加载中...</div>
+          <div id="wx-recommend"></div>
         </div>
       </div>
       
@@ -371,6 +401,7 @@ body {
           <div class="text" id="xhs-content">加载中...</div>
           <div class="label" style="margin-top:8px;">配图建议</div>
           <div class="text" id="xhs-image" style="color:var(--muted);">加载中...</div>
+          <div id="xhs-recommend"></div>
         </div>
       </div>
       
@@ -385,6 +416,7 @@ body {
         <div class="platform-body">
           <div class="label">文章</div>
           <div class="text" id="mp-content">加载中...</div>
+          <div id="mp-recommend"></div>
         </div>
       </div>
       
@@ -399,6 +431,7 @@ body {
         <div class="platform-body">
           <div class="label">视频脚本</div>
           <div class="text" id="dy-content">加载中...</div>
+          <div id="dy-recommend"></div>
         </div>
       </div>
     </div>
@@ -434,6 +467,244 @@ const mpArticles = [{"id": "week1-intro", "title": "为什么我每天花3分钟
 const dyScripts = [{"id": "week1-draw", "title": "每天3分钟，比刷短视频有用", "duration": "15秒", "scenes": [{"time": "0-3s", "visual": "黑屏，闹钟响，手按掉闹钟", "caption": "每天早上"}, {"time": "3-6s", "visual": "手机屏幕，打开小程序，点击抽卡按钮", "caption": "花30秒抽一张签"}, {"time": "6-10s", "visual": "签卡翻转动画，展示大吉签结果", "caption": "看看今天什么运气"}, {"time": "10-13s", "visual": "签文特写：'今天适合推进一个犹豫的机会'", "caption": "签文会给你今天的方向"}, {"time": "13-15s", "visual": "手机放桌上，人起身出门", "caption": "3分钟，开始今天"}], "bgm": "轻快钢琴曲，节奏感强", "caption": "每天3分钟，比刷15分钟短视频有用多了", "hashtags": "#今日运势 #每日一签 #自律 #早起 #仪式感"}, {"id": "week2-collection", "title": "我集齐了所有大吉签", "duration": "20秒", "scenes": [{"time": "0-3s", "visual": "快速翻页效果，一张张签卡闪过", "caption": "每天抽一张"}, {"time": "3-7s", "visual": "牌册页面，签卡一张张亮起", "caption": "集齐一套有惊喜"}, {"time": "7-12s", "visual": "大吉签最后一张亮起，弹出'大吉之人'称号", "caption": "集齐大吉签！获得称号"}, {"time": "12-16s", "visual": "称号特写，金红渐变+烟花粒子特效", "caption": "这个称号还会发光"}, {"time": "16-20s", "visual": "好友榜截图，称号显示在名字后面", "caption": "好友都能看到你的称号"}], "bgm": "热血激昂BGM，带节奏感", "caption": "集齐所有大吉签，获得了这个会发光的称号", "hashtags": "#收集 #成就感 #称号 #游戏 #小程序"}, {"id": "week3-egg", "title": "抽了22次，终于抽到这张彩蛋签", "duration": "18秒", "scenes": [{"time": "0-3s", "visual": "快速点击抽卡按钮，一次次展示普通签卡", "caption": "抽了20多次"}, {"time": "3-6s", "visual": "第22次，签卡翻转，出现粉色光芒", "caption": "终于！"}, {"time": "6-11s", "visual": "彩蛋签特写：桃花签，粉色渐变+花朵底纹+边框流光", "caption": "彩蛋签！桃花主题"}, {"time": "11-15s", "visual": "签文展示：'今天适合主动联系想念的人'", "caption": "签文让我发一条消息"}, {"time": "15-18s", "visual": "聊天记录截图，对方回复了", "caption": "发了。回了。"}], "bgm": "紧张转欢快的BGM，有反转感", "caption": "概率4.5%，抽了22次才抽到，但值了", "hashtags": "#彩蛋 #稀有 #抽卡 #运气 #桃花"}, {"id": "week4-share", "title": "把抽到的签卡分享到朋友圈后", "duration": "15秒", "scenes": [{"time": "0-3s", "visual": "小程序内点击'生成分享卡'，选择模板", "caption": "生成分享卡片"}, {"time": "3-6s", "visual": "7套模板快速切换预览", "caption": "7套模板随便选"}, {"time": "6-9s", "visual": "选择国风模板，保存图片", "caption": "我选这套"}, {"time": "9-12s", "visual": "朋友圈截图，分享卡发布成功", "caption": "发朋友圈"}, {"time": "12-15s", "visual": "微信消息通知，3个人来问这是什么", "caption": "3个人来问在哪抽的"}], "bgm": "轻快活泼BGM", "caption": "分享出去，真的有人会问", "hashtags": "#分享 #朋友圈 #社交 #裂变 #小程序"}];
 
 let currentDay = 1;
+
+/* ============ 推荐素材数据 ============ */
+
+// 分享卡片模板（7套）
+const shareTemplates = {
+  classic: { id: 'classic', name: '经典签文', desc: '通用，长辈也喜欢' },
+  minimal: { id: 'minimal', name: '极简文字', desc: '年轻人最爱，朋友圈高级感' },
+  'ink-wash': { id: 'ink-wash', name: '国风墨色', desc: '小红书点赞率最高' },
+  office: { id: 'office', name: '职场加油', desc: '工作日早上转发最多' },
+  weekend: { id: 'weekend', name: '周末治愈', desc: '周六周日使用最多' },
+  mood: { id: 'mood', name: '情绪日记', desc: '深夜时段突然变多' },
+  luck: { id: 'luck', name: '好运爆棚', desc: '颜色最鲜艳，视觉冲击最强' }
+};
+
+// 大吉签数据
+const daJiSeals = [
+  { name: '财气临门', seal: '旺', score: 92 },
+  { name: '贵人指路', seal: '盛', score: 90 },
+  { name: '财源广进', seal: '发', score: 95 },
+  { name: '一帆风顺', seal: '顺', score: 93 },
+  { name: '锦绣前程', seal: '锦', score: 96 },
+  { name: '紫气东来', seal: '紫', score: 94 }
+];
+
+// 上上签数据
+const shangShangSeals = [
+  { name: '稳步进财', seal: '进', score: 86 },
+  { name: '步步高升', seal: '升', score: 83 },
+  { name: '转机将至', seal: '转', score: 82 },
+  { name: '开门见财', seal: '进', score: 85 },
+  { name: '福星高照', seal: '星', score: 84 },
+  { name: '时来运转', seal: '转', score: 83 }
+];
+
+// 彩蛋签数据
+const caiDanSeals = [
+  { name: '桃花', seal: '桃', color: '粉色' },
+  { name: '金榜', seal: '榜', color: '金色' },
+  { name: '归家', seal: '归', color: '蓝色' },
+  { name: '远行', seal: '远', color: '青绿色' }
+];
+
+// 30天每日金句
+const dailyQuotes = [
+  '今天的你，已经是过去所有日子里最好的版本。',
+  '焦虑的反义词是具体，去做一件小事。',
+  '把犹豫的事推进半步，方向就出来了。',
+  '慢一点不是坏事，看清楚再走。',
+  '今天适合给在意的人发一条消息。',
+  '给自己留15分钟什么都不做。',
+  '回头看看，你比想象中走得更远。',
+  '连续做一件小事，它就会变成习惯。',
+  '不是算命，是每天的心理自检。',
+  '抽到什么不重要，去做才重要。',
+  '有时候最简单的行动，推进最大的事。',
+  '运气是一种准备遇上了机会。',
+  '今天的签文说的可能是你最需要听到的。',
+  '两周了，你已经在坚持了。',
+  ' setbacks are set-ups for comebacks.',
+  '周中是最难熬的，但也是最值得坚持的。',
+  '签卡不是预言，是镜子。',
+  '集齐一套签卡的过程，本身就是一种乐趣。',
+  '分享出去，真的有人会问你在哪抽的。',
+  '月底了，回头看看这个月的签运如何。',
+  '21天了，你已经养成了一个习惯。',
+  '不是迷信，是一种仪式感。',
+  '抽卡前VS抽卡后，差距就是一张签和3分钟。',
+  '发出一条能推动事情的小消息。',
+  '重复签也有新感受，因为你变了。',
+  '工作日用工作模板，周末用周末模板。',
+  '月底的周末，适合回顾。',
+  '下个月的运气从今天开始攒。',
+  '月底抽卡，容易抽到彩蛋签。',
+  '30天，每天3分钟，不亏。'
+];
+
+/* ============ 推荐规则引擎 ============ */
+
+// 判断是否为工作日（周一到周五，即每7天中的第1-5天）
+function isWorkday(day) {
+  const mod = ((day - 1) % 7) + 1;
+  return mod >= 1 && mod <= 5;
+}
+
+// 判断是否为周六
+function isSaturday(day) {
+  const mod = ((day - 1) % 7) + 1;
+  return mod === 6;
+}
+
+// 判断是否为周日
+function isSunday(day) {
+  const mod = ((day - 1) % 7) + 1;
+  return mod === 7;
+}
+
+// 获取微信群推荐
+function getWxRecommend(day) {
+  const result = {};
+
+  // 推荐分享模板
+  if (isWorkday(day)) {
+    result.template = shareTemplates.office;
+  } else if (isSaturday(day)) {
+    result.template = shareTemplates.weekend;
+  } else {
+    result.template = shareTemplates.minimal;
+  }
+
+  // 推荐签卡：每天轮换一张大吉签（30天循环6张，每张出现5次）
+  const sealIndex = Math.floor((day - 1) / 5) % daJiSeals.length;
+  result.sealCard = { type: '大吉签', ...daJiSeals[sealIndex] };
+
+  // 推荐今日金句
+  result.quote = dailyQuotes[day - 1];
+
+  return result;
+}
+
+// 获取小红书推荐
+function getXhsRecommend(day) {
+  const result = {};
+
+  // 推荐分享模板
+  if (day >= 1 && day <= 7) {
+    result.template = shareTemplates.classic;
+  } else if (day >= 8 && day <= 14) {
+    result.template = shareTemplates['ink-wash'];
+  } else if (day >= 15 && day <= 21) {
+    result.template = shareTemplates.mood;
+  } else if (day >= 22 && day <= 28) {
+    result.template = shareTemplates.luck;
+  } else {
+    result.template = shareTemplates.classic;
+  }
+
+  // 推荐签卡：大吉签和上上签交替，彩蛋签在第4、16、25天出现
+  if (day === 4) {
+    result.sealCard = { type: '彩蛋签', ...caiDanSeals[0] }; // 桃花
+  } else if (day === 16) {
+    result.sealCard = { type: '彩蛋签', ...caiDanSeals[1] }; // 金榜
+  } else if (day === 25) {
+    result.sealCard = { type: '彩蛋签', ...caiDanSeals[2] }; // 归家
+  } else {
+    // 大吉签和上上签交替：奇数天大吉签，偶数天上上签
+    const alternate = (day % 2 === 1);
+    if (alternate) {
+      // 大吉签轮换
+      const idx = Math.floor((day - 1) / 2) % daJiSeals.length;
+      result.sealCard = { type: '大吉签', ...daJiSeals[idx] };
+    } else {
+      // 上上签轮换
+      const idx = Math.floor((day - 2) / 2) % shangShangSeals.length;
+      result.sealCard = { type: '上上签', ...shangShangSeals[idx] };
+    }
+  }
+
+  // 配图建议
+  result.imageSuggestion = result.sealCard.type + ' \u00b7 ' + result.sealCard.name + '（' + result.sealCard.seal + '） + ' + result.template.name + '模板';
+
+  return result;
+}
+
+// 获取公众号推荐（每周一）
+function getMpRecommend(weekNum) {
+  const result = {};
+  result.template = shareTemplates.classic;
+
+  const mpSealMap = {
+    1: daJiSeals[1], // 第1周：贵人指路
+    2: daJiSeals[0], // 第2周：财气临门
+    3: daJiSeals[5], // 第3周：紫气东来
+    4: daJiSeals[4]  // 第4周：锦绣前程
+  };
+
+  if (mpSealMap[weekNum]) {
+    result.sealCard = { type: '大吉签', ...mpSealMap[weekNum] };
+  }
+
+  return result;
+}
+
+// 获取抖音推荐（每周三）
+function getDyRecommend(weekNum) {
+  const result = {};
+
+  // 推荐分享模板
+  const dyTemplateMap = {
+    1: 'minimal',
+    2: 'luck',
+    3: 'classic',
+    4: 'ink-wash'
+  };
+  result.template = shareTemplates[dyTemplateMap[weekNum] || 'classic'];
+
+  // 推荐签卡
+  if (weekNum === 2) {
+    // 第2周彩蛋：桃花
+    result.sealCard = { type: '彩蛋签', ...caiDanSeals[0] };
+  } else {
+    const dySealMap = {
+      1: shangShangSeals[1], // 第1周：步步高升
+      3: daJiSeals[2],      // 第3周：财源广进
+      4: shangShangSeals[4]  // 第4周：福星高照
+    };
+    if (dySealMap[weekNum]) {
+      const sealType = weekNum === 3 ? '大吉签' : '上上签';
+      result.sealCard = { type: sealType, ...dySealMap[weekNum] };
+    }
+  }
+
+  return result;
+}
+
+// 生成推荐区块HTML
+function buildRecommendHTML(recommend) {
+  if (!recommend) return '';
+  let html = '<div class="recommend"><div class="recommend-title">推荐素材</div>';
+
+  if (recommend.template) {
+    html += '<div class="recommend-item"><span class="rec-label">分享模板：</span><span class="rec-value">' + recommend.template.name + '（' + recommend.template.id + '）</span></div>';
+  }
+
+  if (recommend.sealCard) {
+    html += '<div class="recommend-item"><span class="rec-label">配签卡：</span><span class="rec-value">' + recommend.sealCard.type + ' \u00b7 ' + recommend.sealCard.name + '（' + recommend.sealCard.seal + '）</span></div>';
+  }
+
+  if (recommend.quote) {
+    html += '<div class="recommend-item"><span class="rec-label">今日金句：</span><span class="rec-value">Day ' + currentDay + ': ' + recommend.quote + '</span></div>';
+  }
+
+  if (recommend.imageSuggestion) {
+    html += '<div class="recommend-item"><span class="rec-label">配图建议：</span><span class="rec-value">' + recommend.imageSuggestion + '</span></div>';
+  }
+
+  html += '</div>';
+  return html;
+}
 const phaseMap = {
   1: '种子测试阶段',
   8: '冷启动W1',
@@ -519,6 +790,8 @@ function renderDay() {
     document.getElementById('wx-status').textContent = '待发布';
     document.getElementById('wx-status').className = 'platform-status';
   }
+  // 微信群推荐素材
+  document.getElementById('wx-recommend').innerHTML = buildRecommendHTML(getWxRecommend(currentDay));
   
   // 小红书
   const xhs = xhsPosts.find(p => p.day === currentDay);
@@ -529,6 +802,8 @@ function renderDay() {
     document.getElementById('xhs-status').textContent = '待发布';
     document.getElementById('xhs-status').className = 'platform-status';
   }
+  // 小红书推荐素材
+  document.getElementById('xhs-recommend').innerHTML = buildRecommendHTML(getXhsRecommend(currentDay));
   
   // 公众号（每周一）
   const weekNum = Math.ceil(currentDay / 7);
@@ -539,10 +814,13 @@ function renderDay() {
     mpEl.innerHTML = '<strong>' + mp.title + '</strong><br><span style="color:var(--muted);">' + mp.subtitle + '</span><br><br>' + mp.sections.map(s => '<strong>' + s.heading + '</strong><br>' + s.content.substring(0, 80) + '...').join('<br><br>');
     mpStatus.textContent = '本周发布';
     mpStatus.className = 'platform-status';
+    // 公众号推荐素材（仅在发布日显示）
+    document.getElementById('mp-recommend').innerHTML = buildRecommendHTML(getMpRecommend(weekNum));
   } else {
     mpEl.innerHTML = '<span class="empty">本周暂无公众号文章，公众号每周一发布</span>';
     mpStatus.textContent = '本周无';
     mpStatus.className = 'platform-status pending';
+    document.getElementById('mp-recommend').innerHTML = '';
   }
   
   // 抖音（每周三）
@@ -553,10 +831,13 @@ function renderDay() {
     dyEl.innerHTML = '<strong>' + dy.title + '</strong>（' + dy.duration + '）<br><br>' + dy.scenes.map(sc => '<strong>' + sc.time + '</strong> ' + sc.visual).join('<br>');
     dyStatus.textContent = '本周拍摄';
     dyStatus.className = 'platform-status';
+    // 抖音推荐素材（仅在发布日显示）
+    document.getElementById('dy-recommend').innerHTML = buildRecommendHTML(getDyRecommend(weekNum));
   } else {
     dyEl.innerHTML = '<span class="empty">本周暂无抖音视频，抖音每周三发布</span>';
     dyStatus.textContent = '本周无';
     dyStatus.className = 'platform-status pending';
+    document.getElementById('dy-recommend').innerHTML = '';
   }
   
   // 清空模拟数据
